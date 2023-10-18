@@ -37,7 +37,7 @@ public class BookController {
     @GET
     @ResponseStatus(200)
     public List<BookDto> getAllBooks() {
-        return null;
+        return bookService.getAllBooks();
     }
 
     @PUT
