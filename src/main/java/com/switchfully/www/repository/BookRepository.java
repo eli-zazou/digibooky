@@ -1,8 +1,6 @@
 package com.switchfully.www.repository;
 
-import com.switchfully.www.domain.Author;
 import com.switchfully.www.domain.Book;
-import com.switchfully.www.domain.ISBN;
 import jakarta.enterprise.context.ApplicationScoped;
 
 import java.util.*;
@@ -30,6 +28,14 @@ public class BookRepository {
 
     public Collection<Book> getByAuthor(String author) {
         return booksById.values().stream().filter(book -> book.getAuthor().getLastname().equalsIgnoreCase(author)).collect(Collectors.toList());
+    }
+
+    public Collection<Book> getByIsbn(String author) {
+        return booksById.values().stream().filter(book -> book.getIsbn().getIsbn().equalsIgnoreCase(author)).collect(Collectors.toList());
+    }
+
+    public Collection<Book> getByTitle(String author) {
+        return booksById.values().stream().filter(book -> book.getTitle().equalsIgnoreCase(author)).collect(Collectors.toList());
     }
 
 
