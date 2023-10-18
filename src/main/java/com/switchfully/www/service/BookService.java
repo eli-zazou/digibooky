@@ -26,11 +26,4 @@ public class BookService {
         return bookMapper.mapToDTO(books);
 
     }
-
-    public BookDto getBookById(String id) {
-        return bookMapper.mapToDTO(
-                bookRepository
-                        .getById(id)
-                        .orElseThrow(() -> new IllegalArgumentException("No Book could be found for id " + id)));
-    }
 }
