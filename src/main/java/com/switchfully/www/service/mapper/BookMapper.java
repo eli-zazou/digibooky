@@ -2,6 +2,7 @@ package com.switchfully.www.service.mapper;
 
 import com.switchfully.www.domain.Book;
 import com.switchfully.www.domain.dto.BookDto;
+import com.switchfully.www.domain.dto.CreateBookDto;
 import jakarta.enterprise.context.ApplicationScoped;
 
 import java.util.List;
