@@ -6,13 +6,13 @@ import java.util.UUID;
 public class Author {
 
     private final String id;
-    private String firstname;
-    private String lastname;
+    private String firstName;
+    private String lastName;
 
-    public Author(String id, String firstname, String lastname) {
+    public Author(String firstname, String lastname) {
         this.id = UUID.randomUUID().toString();
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.firstName = firstname;
+        this.lastName = lastname;
     }
 
     public String getId() {
@@ -20,28 +20,28 @@ public class Author {
     }
 
     public String getFirstname() {
-        return firstname;
+        return firstName;
     }
 
 
     public String getLastname() {
-        return lastname;
+        return lastName;
     }
 
     public void setFirstname(String firstname) {
-        this.firstname = firstname;
+        this.firstName = firstname;
     }
 
     public void setLastname(String lastname) {
-        this.lastname = lastname;
+        this.lastName = lastname;
     }
 
     @Override
     public String toString() {
         return "Author{" +
                 "id='" + id + '\'' +
-                ", firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
+                ", firstname='" + firstName + '\'' +
+                ", lastname='" + lastName + '\'' +
                 '}';
     }
 
@@ -49,11 +49,11 @@ public class Author {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Author author)) return false;
-        return Objects.equals(id, author.id) && Objects.equals(firstname, author.firstname) && Objects.equals(lastname, author.lastname);
+        return Objects.equals(id, author.id) && Objects.equals(firstName, author.firstName) && Objects.equals(lastName, author.lastName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstname, lastname);
+        return Objects.hash(id, firstName, lastName);
     }
 }
