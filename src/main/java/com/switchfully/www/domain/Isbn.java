@@ -13,8 +13,8 @@ public class Isbn {
         return isbn;
     }
 
-    public boolean isValidIsbn() {
-        if (this.isbn.length() != 13) return false;
+    public boolean isValidIsbn(String isbn) {
+        if (isbn.length() != 13) return false;
         if (!this.isbn.matches("[0-9]+")) return false;
         return true;
 //        int sum = 0;
