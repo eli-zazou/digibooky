@@ -28,8 +28,8 @@ public class CreateBookDto {
         return author;
     }
 
-    public CreateBookDto setIsbn(ISBN isbn) {
-        this.isbn = isbn;
+    public CreateBookDto setIsbn(String isbn) {
+        this.isbn = new ISBN(isbn);
         return this;
     }
 
