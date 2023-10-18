@@ -13,24 +13,29 @@ public class BookDto {
     public BookDto() {
     }
 
-    public void setId(String id) {
+    public BookDto setId(String id) {
         this.id = id;
+        return this;
     }
 
-    public void setIsbn(ISBN isbn) {
+    public BookDto setIsbn(ISBN isbn) {
         this.isbn = isbn;
+        return this;
     }
 
-    public void setTitle(String title) {
+    public BookDto setTitle(String title) {
         this.title = title;
+        return this;
     }
 
-    public void setSummary(String summary) {
+    public BookDto setSummary(String summary) {
         this.summary = summary;
+        return this;
     }
 
-    public void setAuthor(Author author) {
+    public BookDto setAuthor(Author author) {
         this.author = author;
+        return this;
     }
 
     public String getId() {
