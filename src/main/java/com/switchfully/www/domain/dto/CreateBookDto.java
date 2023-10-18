@@ -1,10 +1,10 @@
 package com.switchfully.www.domain.dto;
 
 import com.switchfully.www.domain.Author;
-import com.switchfully.www.domain.ISBN;
+import com.switchfully.www.domain.Isbn;
 
 public class CreateBookDto {
-    private ISBN isbn;
+    private Isbn isbn;
     private String title;
     private String summary;
     private Author author;
@@ -12,7 +12,7 @@ public class CreateBookDto {
     public CreateBookDto(){
         //JACKSON
     }
-    public ISBN getIsbn() {
+    public Isbn getIsbn() {
         return isbn;
     }
 
@@ -28,8 +28,8 @@ public class CreateBookDto {
         return author;
     }
 
-    public CreateBookDto setIsbn(ISBN isbn) {
-        this.isbn = isbn;
+    public CreateBookDto setIsbn(String isbn) {
+        this.isbn = new Isbn(isbn);
         return this;
     }
 

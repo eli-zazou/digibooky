@@ -2,7 +2,7 @@ package com.switchfully.www.service;
 
 import com.switchfully.www.domain.Author;
 import com.switchfully.www.domain.Book;
-import com.switchfully.www.domain.ISBN;
+import com.switchfully.www.domain.Isbn;
 import com.switchfully.www.domain.dto.BookDto;
 import com.switchfully.www.repository.BookRepository;
 import com.switchfully.www.service.mapper.BookMapper;
@@ -12,9 +12,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.util.List;
-import java.util.UUID;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class BookServiceTest {
 
@@ -31,12 +28,12 @@ class BookServiceTest {
         bookRepositoryMock = Mockito.mock(BookRepository.class);
         bookMapperMock = Mockito.mock(BookMapper.class);
         bookService = new BookService(bookRepositoryMock, bookMapperMock);
-        book1 = new Book(new ISBN("978-8845292613"),
+        book1 = new Book(new Isbn("978-8845292613"),
                 "The lord of the Rings",
                 "Hobbit goes on a journey",
                 new Author("J.R.R", "Tolkien")
         );
-        book2 = new Book(new ISBN("978-1338878929"),
+        book2 = new Book(new Isbn("978-1338878929"),
                 "Harry Potter Plays Chess",
                 "Wizzard boy goes to school",
                 new Author("J.K.", "Rowling")
@@ -69,5 +66,16 @@ class BookServiceTest {
         List<BookDto> actualBooks = bookService.getAllBooks();
         // then
         Assertions.assertThat(actualBooks).containsExactlyInAnyOrder(bookDto1,bookDto2);
+    }
+
+    @Test
+    void getBooksByAuthor_givenRepoWithBooks_thenReturnBookDTO() {
+        // given
+        Mockito.when(bookRepositoryMock.getByAuthor("Rowling")).thenReturn(List.of(book2));
+        Mockito.when(bookMapperMock.mapToDTO(List.of(book2))).thenReturn(List.of(bookDto2));
+        // when
+        List<BookDto> actualBooks = bookService.getBooksByAuthor("Rowling");
+        // then
+        Assertions.assertThat(actualBooks).containsExactlyInAnyOrder(bookDto2);
     }
 }

@@ -5,13 +5,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class ISBNTest {
-    private ISBN isbn;
+class IsbnTest {
+    private Isbn isbn;
     boolean result;
 
     @BeforeEach
     void setup(){
-        isbn = new ISBN("9783456789123");
+        isbn = new Isbn("9783456789123");
 //        result = isbn.isValidIsbn();
     }
     @Test

@@ -2,10 +2,10 @@ package com.switchfully.www.domain;
 
 import java.util.Objects;
 
-public class ISBN {
+public class Isbn {
     private String isbn;
 
-    public ISBN(String isbn) {
+    public Isbn(String isbn) {
 //        if (!isValidIsbn()) throw new IllegalArgumentException("This ISBN is not valid.");
 
         this.isbn = isbn;
@@ -39,7 +39,7 @@ public class ISBN {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof ISBN isbn1)) return false;
+        if (!(o instanceof Isbn isbn1)) return false;
         return Objects.equals(isbn, isbn1.isbn);
     }
 

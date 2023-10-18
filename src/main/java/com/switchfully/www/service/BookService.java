@@ -28,6 +28,21 @@ public class BookService {
 
     }
 
+    public List<BookDto> getBooksByAuthor(String author) {
+        List<Book> books = bookRepository.getByAuthor(author).stream().toList();
+        return bookMapper.mapToDTO(books);
+    }
+
+    public List<BookDto> getBooksByIsbn(String isbn) {
+        List<Book> books = bookRepository.getByAuthor(isbn).stream().toList();
+        return bookMapper.mapToDTO(books);
+    }
+
+    public List<BookDto> getBooksByTitle(String title) {
+        List<Book> books = bookRepository.getByAuthor(title).stream().toList();
+        return bookMapper.mapToDTO(books);
+    }
+
     public BookDto createBook(CreateBookDto createBookDto) {
         Book bookToSave = new Book(createBookDto.getIsbn(), createBookDto.getTitle(), createBookDto.getSummary(), createBookDto.getAuthor());
 

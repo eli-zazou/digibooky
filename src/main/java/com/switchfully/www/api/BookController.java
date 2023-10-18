@@ -41,6 +41,27 @@ public class BookController {
         return bookService.getAllBooks();
     }
 
+    @GET
+    @Path("/author/{author}")
+    @ResponseStatus(200)
+    public List<BookDto> getBooksByAuthor(String author) {
+        return bookService.getBooksByAuthor(author);
+    }
+
+    @GET
+    @Path("/isbn/{isbn}")
+    @ResponseStatus(200)
+    public List<BookDto> getBooksByIsbn(String isbn) {
+        return bookService.getBooksByIsbn(isbn);
+    }
+
+    @GET
+    @Path("/title/{title}")
+    @ResponseStatus(200)
+    public List<BookDto> getBooksByTitle(String title) {
+        return bookService.getBooksByTitle(title);
+    }
+
     @PUT
     @Path("/{id}")
     @ResponseStatus(200)
