@@ -9,11 +9,9 @@ public class Member {
     private String lastName;
     private String firstName;
     private String email;
-    private String streetName;
-    private String streetNumber;
-    private City city;
+    private Address address;
 
-    public Member(String inss, String lastName, String firstName, String email, String streetName, String streetNumber, City city) {
+    public Member(String inss, String lastName, String firstName, String email, Address address) {
         this.id = UUID.randomUUID().toString();
         // todo validate INSS
         this.inss = inss;
@@ -21,9 +19,7 @@ public class Member {
         this.firstName = firstName;
         // todo validate email
         this.email = email;
-        this.streetName = streetName;
-        this.streetNumber = streetNumber;
-        this.city = city;
+        this.address = address;
     }
 
 
