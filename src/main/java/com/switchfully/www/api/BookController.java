@@ -31,7 +31,7 @@ public class BookController {
     @Path("/{id}")
     @ResponseStatus(200)
     public BookDto getBook(@PathParam("id") String id) {
-        return null;
+        return bookService.getBookById(id);
     }
 
     @GET
