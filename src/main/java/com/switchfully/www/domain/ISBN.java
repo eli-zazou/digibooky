@@ -1,5 +1,7 @@
 package com.switchfully.www.domain;
 
+import java.util.Objects;
+
 public class ISBN {
     private final String isbn;
 
@@ -30,7 +32,17 @@ public class ISBN {
 //        return checkDigit == calculatedCheckDigit;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ISBN isbn1)) return false;
+        return Objects.equals(isbn, isbn1.isbn);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(isbn);
+    }
 }
 
 
