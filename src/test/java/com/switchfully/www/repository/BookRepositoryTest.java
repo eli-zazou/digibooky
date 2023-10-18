@@ -23,5 +23,4 @@ class BookRepositoryTest {
 
         Assertions.assertThat(bookToSave).isEqualTo(bookRepository.save(bookToSave));
     }
-
 }

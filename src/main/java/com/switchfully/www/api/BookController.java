@@ -22,9 +22,10 @@ public class BookController {
     }
 
     @POST
+    @Produces(MediaType.APPLICATION_JSON) //do we need this, since it is already at lines 15-16 ?
     @ResponseStatus(201)
     public Response createBook(CreateBookDto createBookDto) {
-        return null;
+        return Response.status(201).entity(bookService.createBook(createBookDto)).build();
     }
 
     @GET

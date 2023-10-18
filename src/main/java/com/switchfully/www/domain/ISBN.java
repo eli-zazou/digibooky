@@ -3,7 +3,7 @@ package com.switchfully.www.domain;
 import java.util.Objects;
 
 public class ISBN {
-    private final String isbn;
+    private String isbn;
 
     public ISBN(String isbn) {
 //        if (!isValidIsbn()) throw new IllegalArgumentException("This ISBN is not valid.");
@@ -13,6 +13,10 @@ public class ISBN {
 
     public String getIsbn() {
         return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 
     public boolean isValidIsbn(String isbn) {

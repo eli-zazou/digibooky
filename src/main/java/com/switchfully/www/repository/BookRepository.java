@@ -32,6 +32,4 @@ public class BookRepository {
 
         return booksById.values();
     }
-
-
 }

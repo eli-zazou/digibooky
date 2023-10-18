@@ -25,4 +25,8 @@ public class BookMapper {
                 .setAuthor(book.getAuthor())
                 .setSummary(book.getSummary());
     }
+
+    public Book mapToEntity (CreateBookDto createBookDto){
+        return new Book(createBookDto.getIsbn(),createBookDto.getTitle(),createBookDto.getSummary(), createBookDto.getAuthor());
+    }
 }

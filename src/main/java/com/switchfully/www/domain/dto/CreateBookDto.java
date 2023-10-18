@@ -9,6 +9,9 @@ public class CreateBookDto {
     private String summary;
     private Author author;
 
+    public CreateBookDto(){
+        //JACKSON
+    }
     public ISBN getIsbn() {
         return isbn;
     }
