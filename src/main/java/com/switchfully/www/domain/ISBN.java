@@ -1,9 +1,9 @@
 package com.switchfully.www.domain;
 
-public class Isbn {
-    private String isbn;
+public class ISBN {
+    private final String isbn;
 
-    public Isbn(String isbn) {
+    public ISBN(String isbn) {
 //        if (!isValidIsbn()) throw new IllegalArgumentException("This ISBN is not valid.");
 
         this.isbn = isbn;
