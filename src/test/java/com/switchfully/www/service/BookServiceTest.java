@@ -70,4 +70,15 @@ class BookServiceTest {
         // then
         Assertions.assertThat(actualBooks).containsExactlyInAnyOrder(bookDto1,bookDto2);
     }
+
+    @Test
+    void getBooksByAuthor_givenRepoWithBooks_thenReturnBookDTO() {
+        // given
+        Mockito.when(bookRepositoryMock.getByAuthor("Rowling")).thenReturn(List.of(book2));
+        Mockito.when(bookMapperMock.mapToDTO(List.of(book2))).thenReturn(List.of(bookDto2));
+        // when
+        List<BookDto> actualBooks = bookService.getBooksByAuthor("Rowling");
+        // then
+        Assertions.assertThat(actualBooks).containsExactlyInAnyOrder(bookDto2);
+    }
 }

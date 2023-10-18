@@ -26,4 +26,10 @@ public class BookService {
         return bookMapper.mapToDTO(books);
 
     }
+
+    public List<BookDto> getBooksByAuthor(String author) {
+        List<Book> books = bookRepository.getByAuthor(author).stream().toList();
+        return bookMapper.mapToDTO(books);
+
+    }
 }

@@ -23,8 +23,8 @@ public class BookRepository {
         return null;
     }
 
-    public Optional<List<Book>> getByAuthor(String author) {
-        return Optional.of(booksById.values().stream().filter(book -> book.getAuthor().getLastname().equals(author)).collect(Collectors.toList()));
+    public Collection<Book> getByAuthor(String author) {
+        return booksById.values().stream().filter(book -> book.getAuthor().getLastname().equalsIgnoreCase(author)).collect(Collectors.toList());
     }
 
     
