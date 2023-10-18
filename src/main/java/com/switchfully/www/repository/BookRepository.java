@@ -3,10 +3,8 @@ package com.switchfully.www.repository;
 import com.switchfully.www.domain.Book;
 import jakarta.enterprise.context.ApplicationScoped;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @ApplicationScoped
 public class BookRepository {
@@ -31,6 +29,7 @@ public class BookRepository {
 
 
     public Collection<Book> getAllBooks(){
+
         return booksById.values();
     }
 
