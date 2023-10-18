@@ -7,8 +7,11 @@ public class CreateBookDto {
     private ISBN isbn;
     private String title;
     private String summary;
-    private AuthorDTO author;
+    private Author author;
 
+    public CreateBookDto(){
+        //JACKSON
+    }
     public ISBN getIsbn() {
         return isbn;
     }
@@ -21,7 +24,7 @@ public class CreateBookDto {
         return summary;
     }
 
-    public AuthorDTO getAuthor() {
+    public Author getAuthor() {
         return author;
     }
 
@@ -40,7 +43,7 @@ public class CreateBookDto {
         return this;
     }
 
-    public CreateBookDto setAuthor(AuthorDTO author) {
+    public CreateBookDto setAuthor(Author author) {
         this.author = author;
         return this;
     }

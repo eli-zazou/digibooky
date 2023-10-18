@@ -2,6 +2,7 @@ package com.switchfully.www.service.mapper;
 
 import com.switchfully.www.domain.Book;
 import com.switchfully.www.domain.dto.BookDto;
+import com.switchfully.www.domain.dto.CreateBookDto;
 import jakarta.enterprise.context.ApplicationScoped;
 
 import java.util.List;
@@ -24,5 +25,9 @@ public class BookMapper {
                 .setTitle(book.getTitle())
                 .setAuthor(book.getAuthor())
                 .setSummary(book.getSummary());
+    }
+
+    public Book mapToEntity (CreateBookDto createBookDto){
+        return new Book(createBookDto.getIsbn(),createBookDto.getTitle(),createBookDto.getSummary(), createBookDto.getAuthor());
     }
 }
