@@ -9,14 +9,6 @@ public class CreateBookDto {
     private String summary;
     private AuthorDTO author;
 
-    public CreateBookDto(){}
-    public CreateBookDto(ISBN isbn, String title, String summary, AuthorDTO author) {
-        this.isbn = isbn;
-        this.title = title;
-        this.summary = summary;
-        this.author = author;
-    }
-
     public ISBN getIsbn() {
         return isbn;
     }
@@ -31,5 +23,25 @@ public class CreateBookDto {
 
     public AuthorDTO getAuthor() {
         return author;
+    }
+
+    public CreateBookDto setIsbn(ISBN isbn) {
+        this.isbn = isbn;
+        return this;
+    }
+
+    public CreateBookDto setTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public CreateBookDto setSummary(String summary) {
+        this.summary = summary;
+        return this;
+    }
+
+    public CreateBookDto setAuthor(AuthorDTO author) {
+        this.author = author;
+        return this;
     }
 }
