@@ -20,6 +20,7 @@ public class Isbn {
     }
 
     public boolean isValidIsbn(String isbn) {
+        if (isbn==null) return false;
         if (isbn.length() != 13) return false;
         if (!this.isbn.matches("[0-9]+")) return false;
         return true;

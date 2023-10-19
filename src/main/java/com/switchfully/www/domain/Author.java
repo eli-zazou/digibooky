@@ -12,7 +12,7 @@ public class Author {
     public Author(String firstname, String lastname) {
         this.id = UUID.randomUUID().toString();
         this.firstName = firstname;
-        this.lastName = lastname;
+        setLastname(lastname);
     }
 
     public String getId() {
@@ -33,6 +33,9 @@ public class Author {
     }
 
     public void setLastname(String lastname) {
+        if(lastname==null) {
+            throw new IllegalArgumentException("Please provide a lastname for the author");
+        }
         this.lastName = lastname;
     }
 

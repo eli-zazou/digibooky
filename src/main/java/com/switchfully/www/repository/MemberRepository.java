@@ -18,6 +18,7 @@ public class MemberRepository {
         this.createFirstAdmin();
     }
 
+    // todo The email should be unique.
     public Member addMember(Member member){
         if(memberById.containsValue(member)){
             throw new IllegalArgumentException("This member already exists.");
@@ -56,8 +57,7 @@ public class MemberRepository {
     }
 
     private void createFirstAdmin(){
-        Address address = new Address("Rue Henri Maus", "25", new City("1000", "Brussels"));
-        Member admin = new Member("1", "admin", "admin", "admin@test.com", "12346",address, UserRole.ADMIN);
+        Member admin = new Member("1", "admin", "admin", "admin@test.com", "12346", new Address("Stationsstraat","80",new City("8000","Brugge")), UserRole.ADMIN);
         this.memberById.put(admin.getId(), admin);
     }
 
