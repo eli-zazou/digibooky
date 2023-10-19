@@ -1,5 +1,6 @@
 package com.switchfully.www.domain;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 import java.util.regex.Pattern;
 
@@ -9,15 +10,25 @@ public class Member {
     private String lastName;
     private String firstName;
     private String email;
+    private String password;
     private Address address;
+    private UserRole role;
+    private LocalDateTime dateCreated;
+    private LocalDateTime dateDeleted;
+    private LocalDateTime dateUpdated;
 
-    public Member(String inss, String lastName, String firstName, String email, Address address)  throws IllegalArgumentException {
+    public Member(String inss, String lastName, String firstName, String email, String password, Address address, UserRole role)  throws IllegalArgumentException {
         this.id = UUID.randomUUID().toString();
         this.inss = inss;
         this.lastName = lastName;
         this.firstName = firstName;
         setEmail(email);
+        this.password = password;
         this.address = address;
+        this.role = role;
+        this.dateCreated = LocalDateTime.now();
+        this.dateUpdated = null;
+        this.dateDeleted = null;
     }
 
     public String getId() {
@@ -40,8 +51,16 @@ public class Member {
         return email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public Address getAddress() {
         return address;
+    }
+
+    public UserRole getRole() {
+        return role;
     }
 
     public void setId(String id) {
@@ -77,6 +96,29 @@ public class Member {
         return Pattern.compile(emailRegexPattern)
                 .matcher(email)
                 .matches();
+    }
+    public LocalDateTime getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(LocalDateTime dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public LocalDateTime getDateDeleted() {
+        return dateDeleted;
+    }
+
+    public void setDateDeleted(LocalDateTime dateDeleted) {
+        this.dateDeleted = dateDeleted;
+    }
+
+    public LocalDateTime getDateUpdated() {
+        return dateUpdated;
+    }
+
+    public void setDateUpdated(LocalDateTime dateUpdated) {
+        this.dateUpdated = dateUpdated;
     }
 
 

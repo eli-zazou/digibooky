@@ -1,5 +1,8 @@
 package com.switchfully.www.domain;
 
+import java.nio.file.LinkOption;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -9,9 +12,15 @@ public class Book {
     private String title;
     private String summary;
     private Author author;
+    private LocalDateTime dateCreated;
+    private LocalDateTime dateDeleted;
+    private LocalDateTime dateUpdated;
 
     public Book(Isbn isbn, String title, String summary, Author author) {
         this.id = UUID.randomUUID().toString();
+        this.dateCreated = LocalDateTime.now();
+        this.dateDeleted = null;
+        this.dateUpdated = null;
         this.isbn = isbn;
         this.title = title;
         this.summary = summary;
@@ -36,6 +45,26 @@ public class Book {
 
     public Author getAuthor() {
         return author;
+    }
+
+    public LocalDateTime getDateCreated() {
+        return dateCreated;
+    }
+
+    public LocalDateTime getDateDeleted() {
+        return dateDeleted;
+    }
+
+    public LocalDateTime getDateUpdated() {
+        return dateUpdated;
+    }
+
+    public void setDateDeleted(LocalDateTime dateDeleted) {
+        this.dateDeleted = dateDeleted;
+    }
+
+    public void setDateUpdated(LocalDateTime dateUpdated) {
+        this.dateUpdated = dateUpdated;
     }
 
     public void setIsbn(Isbn isbn) {

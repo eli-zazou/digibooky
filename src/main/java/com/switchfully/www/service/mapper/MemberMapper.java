@@ -3,6 +3,7 @@ package com.switchfully.www.service.mapper;
 import com.switchfully.www.api.CreateMemberDTO;
 import com.switchfully.www.domain.Book;
 import com.switchfully.www.domain.Member;
+import com.switchfully.www.domain.UserRole;
 import com.switchfully.www.domain.dto.BookDto;
 import com.switchfully.www.domain.dto.CreateBookDto;
 import com.switchfully.www.domain.dto.MemberDto;
@@ -35,6 +36,8 @@ public class MemberMapper {
                 createMemberDTO.getLastName(),
                 createMemberDTO.getFirstName(),
                 createMemberDTO.getEmail(),
-                createMemberDTO.getAddress());
+                createMemberDTO.getAddress(),
+                UserRole.MEMBER);
     }
+
 }

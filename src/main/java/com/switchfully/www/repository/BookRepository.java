@@ -3,6 +3,7 @@ package com.switchfully.www.repository;
 import com.switchfully.www.domain.Book;
 import jakarta.enterprise.context.ApplicationScoped;
 
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -27,8 +28,12 @@ public class BookRepository {
 
     public boolean delete(Book book){
         //TO DO check if the book is lended by a member
-        Book isDeleted = booksById.remove(book.getId());
-        return isDeleted != null;
+        if (book.getDateDeleted() != null){
+            book.setDateDeleted(LocalDateTime.now());
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public Collection<Book> getByAuthor(String author) {

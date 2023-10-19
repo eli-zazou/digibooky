@@ -75,6 +75,6 @@ public class BookController {
     @ResponseStatus(202)
     public Response deleteBook(@PathParam("id") String id) {
         //return bookService.deleteBookById(id);
-        return null;
+        return Response.status(201).entity(bookService.deleteBookById(id)).build();
     }
 }
