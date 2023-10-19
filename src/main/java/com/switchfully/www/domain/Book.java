@@ -21,10 +21,10 @@ public class Book {
         this.dateCreated = LocalDateTime.now();
         this.dateDeleted = null;
         this.dateUpdated = null;
-        this.isbn = isbn;
-        this.title = title;
+        setIsbn(isbn);
+        setTitle(title);
         this.summary = summary;
-        this.author = author;
+        setAuthor(author);
     }
 
     public String getId() {
@@ -67,11 +67,17 @@ public class Book {
         this.dateUpdated = dateUpdated;
     }
 
-    public void setIsbn(Isbn isbn) {
+    public void setIsbn(Isbn isbn) throws IllegalArgumentException {
+        if(isbn==null) {
+            throw new IllegalArgumentException("ISBN of the book can't be empty");
+        }
         this.isbn = isbn;
     }
 
     public void setTitle(String title) {
+        if(title==null) {
+            throw new IllegalArgumentException("Please provide a title for the book");
+        }
         this.title = title;
     }
 
@@ -80,6 +86,9 @@ public class Book {
     }
 
     public void setAuthor(Author author) {
+        if(author==null) {
+            throw new IllegalArgumentException("Please provide an author for the book");
+        }
         this.author = author;
     }
 

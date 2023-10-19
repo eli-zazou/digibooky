@@ -17,14 +17,20 @@ public class Member {
     private LocalDateTime dateDeleted;
     private LocalDateTime dateUpdated;
 
+    /*
+
+The INSS should be filled in
+The last name and city should be filled in.
+    * */
+
     public Member(String inss, String lastName, String firstName, String email, String password, Address address, UserRole role)  throws IllegalArgumentException {
         this.id = UUID.randomUUID().toString();
-        this.inss = inss;
-        this.lastName = lastName;
+        setInss(inss);
+        setLastName(lastName);
         this.firstName = firstName;
         setEmail(email);
         this.password = password;
-        this.address = address;
+        setAddress(address);
         this.role = role;
         this.dateCreated = LocalDateTime.now();
         this.dateUpdated = null;
@@ -68,10 +74,16 @@ public class Member {
     }
 
     public void setInss(String inss) {
+        if(inss == null) {
+            throw new IllegalArgumentException("INSS can't be empty");
+        }
         this.inss = inss;
     }
 
     public void setLastName(String lastName) {
+        if(lastName == null) {
+            throw new IllegalArgumentException("Last name can't be empty");
+        }
         this.lastName = lastName;
     }
 
@@ -87,10 +99,17 @@ public class Member {
     }
 
     public void setAddress(Address address) {
+        if(address == null) {
+            throw new IllegalArgumentException("Address can't be empty");
+        }
         this.address = address;
     }
 
     private boolean isValidEmail(String email){
+      if(email==null) {
+          return false;
+      }
+
       String emailRegexPattern = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
                 + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
         return Pattern.compile(emailRegexPattern)

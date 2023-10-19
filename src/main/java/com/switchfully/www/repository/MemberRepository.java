@@ -1,9 +1,6 @@
 package com.switchfully.www.repository;
 
-import com.switchfully.www.domain.Address;
-import com.switchfully.www.domain.Feature;
-import com.switchfully.www.domain.Member;
-import com.switchfully.www.domain.UserRole;
+import com.switchfully.www.domain.*;
 import com.switchfully.www.exceptions.UnauthorizatedException;
 import jakarta.enterprise.context.ApplicationScoped;
 
@@ -21,6 +18,7 @@ public class MemberRepository {
         this.createFirstAdmin();
     }
 
+    // todo The email should be unique.
     public Member addMember(Member member){
         if(memberById.containsValue(member)){
             throw new IllegalArgumentException("This member already exists.");
@@ -59,7 +57,7 @@ public class MemberRepository {
     }
 
     private void createFirstAdmin(){
-        Member admin = new Member("1", "admin", "admin", "admin@test.com", "12346", new Address(), UserRole.ADMIN);
+        Member admin = new Member("1", "admin", "admin", "admin@test.com", "12346", new Address("Stationsstraat","80",new City("8000","Brugge")), UserRole.ADMIN);
         this.memberById.put(admin.getId(), admin);
     }
 

@@ -1,5 +1,6 @@
 package com.switchfully.www.api;
 
+import com.switchfully.www.exceptions.NotFoundException;
 import com.switchfully.www.exceptions.UnauthorizatedException;
 import jakarta.ws.rs.core.Response;
 import org.jboss.resteasy.reactive.server.ServerExceptionMapper;
@@ -10,10 +11,10 @@ public class ControllerExceptionHandler {
 
     private static final Logger LOG = Logger.getLogger(ControllerExceptionHandler.class);
 
-    @ServerExceptionMapper(IllegalArgumentException.class)
-    protected Response illegalArgumentException(IllegalArgumentException illegalArgumentException) {
-        LOG.info(illegalArgumentException.getMessage());
-        return Response.status(Response.Status.BAD_REQUEST).entity(illegalArgumentException.getMessage()).build();
+    @ServerExceptionMapper(value = {IllegalArgumentException.class, NotFoundException.class})
+    protected Response runtimeException(RuntimeException runtimeException) {
+        LOG.info(runtimeException.getMessage());
+        return Response.status(Response.Status.BAD_REQUEST).entity(runtimeException.getMessage()).build();
     }
 
     @ServerExceptionMapper(UnauthorizatedException.class)
