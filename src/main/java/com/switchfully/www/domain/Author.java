@@ -5,35 +5,40 @@ import java.util.UUID;
 
 public class Author {
 
-    private final String id;
+    private String id;
     private String firstName;
     private String lastName;
+
+    private Author() {
+        this.id = UUID.randomUUID().toString();
+    }
+
 
     public Author(String firstname, String lastname) {
         this.id = UUID.randomUUID().toString();
         this.firstName = firstname;
-        setLastname(lastname);
+        setLastName(lastname);
     }
 
     public String getId() {
         return id;
     }
 
-    public String getFirstname() {
+    public String getFirstName() {
         return firstName;
     }
 
 
-    public String getLastname() {
+    public String getLastName() {
         return lastName;
     }
 
-    public void setFirstname(String firstname) {
+    public void setFirstName(String firstname) {
         this.firstName = firstname;
     }
 
-    public void setLastname(String lastname) {
-        if(lastname==null) {
+    public void setLastName(String lastname) {
+        if (lastname == null) {
             throw new IllegalArgumentException("Please provide a lastname for the author");
         }
         this.lastName = lastname;

@@ -83,7 +83,7 @@ public class Book {
 
     public void setSummary(String summary) {
         if (summary == null) {
-            return;
+            throw new IllegalArgumentException("Please provide a summary ");
         }
         this.summary = summary;
     }
