@@ -42,7 +42,7 @@ public class BookService {
     }
 
     public List<BookDto> getBooksByTitle(String title) {
-        List<Book> books = bookRepository.getByAuthor(title).stream().toList();
+        List<Book> books = bookRepository.getByTitle(title).stream().toList();
         return bookMapper.mapToDTO(books);
     }
 
