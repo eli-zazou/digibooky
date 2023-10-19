@@ -66,7 +66,7 @@ public class BookService {
     }
 
     public Boolean deleteBookById(String id) {
-        return bookRepository.delete(bookRepository.getById(id)
+        return bookRepository.deleteById(bookRepository.getById(id)
                 .orElseThrow(() -> new IllegalArgumentException("No Book could be found for id " + id)));
     }
 

@@ -35,6 +35,10 @@ public class Book {
         return isbn;
     }
 
+    public String getIsbnIdentifier(){
+        return isbn.getIsbnIdentifier();
+    }
+
     public String getTitle() {
         return title;
     }
@@ -45,6 +49,10 @@ public class Book {
 
     public Author getAuthor() {
         return author;
+    }
+
+    public String getAuthorFullname(){
+        return author.getFullName();
     }
 
     public LocalDateTime getDateCreated() {

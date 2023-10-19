@@ -5,6 +5,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @ApplicationScoped
@@ -17,38 +18,59 @@ public class BookRepository {
 
     }
 
-    public Optional<Book> getById(String Id) {
-        return Optional.ofNullable(booksById.get(Id));
-    }
-
     public Book addBook(Book book) {
         booksById.put(book.getId(), book);
         return book;
     }
 
-    public boolean delete(Book book) {
-        // TODO check if the book is lended by a member
+    public Collection<Book> getAllBooks() {
+        return booksById.values();
+    }
+
+    public Optional<Book> getById(String Id) {
+        return Optional.ofNullable(booksById.get(Id));
+    }
+
+    public Optional<Book> getByIsbn(String isbn) {
+        isbn = isbn.replaceAll("\\*", ".*");
+        isbn = isbn.replaceAll("-", "");
+        Pattern pattern = Pattern.compile(isbn);
+
+        return booksById.values()
+                .stream()
+                .filter(book -> pattern.matcher(book.getIsbnIdentifier()).find())
+                .findFirst();
+    }
+
+    public Collection<Book> getByTitle(String title) {
+        title = title.replaceAll("\\*", ".*");
+        title = title.replaceAll(" ", "\\\\s+");
+        Pattern pattern = Pattern.compile("\\b" + title + "\\b", Pattern.CASE_INSENSITIVE);
+
+        return booksById
+                .values()
+                .stream()
+                .filter(book -> pattern.matcher(book.getTitle()).find())
+                .toList();
+    }
+
+    public Collection<Book> getByAuthor(String author) {
+        author = author.replaceAll("\\*", ".*");
+        author = author.replaceAll(" ", "\\\\s+");
+        Pattern pattern = Pattern.compile("\\b" + author + "\\b", Pattern.CASE_INSENSITIVE);
+
+        return booksById.values()
+                .stream()
+                .filter(book -> pattern.matcher(book.getAuthorFullname()).find())
+                .collect(Collectors.toList());
+    }
+
+    public boolean deleteById(Book book) {
+        // TODO check if the book is lent by a member
         if (book.getDateDeleted() == null) {
             book.setDateDeleted(LocalDateTime.now());
             return true;
         }
         return false;
-    }
-
-    public Collection<Book> getByAuthor(String author) {
-        return booksById.values().stream().filter(book -> book.getAuthor().getLastName().equalsIgnoreCase(author)).collect(Collectors.toList());
-    }
-
-    public Collection<Book> getByIsbn(String isbn) {
-        return booksById.values().stream().filter(book -> book.getIsbn().getIsbn().equalsIgnoreCase(isbn)).collect(Collectors.toList());
-    }
-
-    public Collection<Book> getByTitle(String title) {
-        return booksById.values().stream().filter(book -> book.getTitle().equalsIgnoreCase(title)).collect(Collectors.toList());
-    }
-
-
-    public Collection<Book> getAllBooks() {
-        return booksById.values();
     }
 }

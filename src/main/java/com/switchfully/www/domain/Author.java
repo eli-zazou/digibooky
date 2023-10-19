@@ -33,6 +33,10 @@ public class Author {
         return lastName;
     }
 
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
+
     public void setFirstName(String firstname) {
         this.firstName = firstname;
     }

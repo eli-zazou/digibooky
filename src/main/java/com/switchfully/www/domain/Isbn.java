@@ -1,12 +1,9 @@
 package com.switchfully.www.domain;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.Objects;
 
 public class Isbn {
-    private String isbn;
+    private String isbnIdentifier;
 
     private Isbn() {
     }
@@ -15,21 +12,21 @@ public class Isbn {
     public Isbn(String isbn) {
 //        if (!isValidIsbn()) throw new IllegalArgumentException("This ISBN is not valid.");
 
-        this.isbn = isbn;
+        this.isbnIdentifier = isbn;
     }
 
-    public String getIsbn() {
-        return isbn;
+    public String getIsbnIdentifier() {
+        return isbnIdentifier;
     }
 
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
+    public void setIsbnIdentifier(String isbnIdentifier) {
+        this.isbnIdentifier = isbnIdentifier;
     }
 
     public boolean isValidIsbn(String isbn) {
         if (isbn == null) return false;
         if (isbn.length() != 13) return false;
-        if (!this.isbn.matches("[0-9]+")) return false;
+        if (!this.isbnIdentifier.matches("[0-9]+")) return false;
         return true;
 //        int sum = 0;
 //        for (int count = 0; count < 12; count++) {
@@ -48,12 +45,12 @@ public class Isbn {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Isbn isbn1)) return false;
-        return Objects.equals(isbn, isbn1.isbn);
+        return Objects.equals(isbnIdentifier, isbn1.isbnIdentifier);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(isbn);
+        return Objects.hash(isbnIdentifier);
     }
 }
 
