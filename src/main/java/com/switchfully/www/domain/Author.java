@@ -5,9 +5,14 @@ import java.util.UUID;
 
 public class Author {
 
-    private final String id;
+    private String id;
     private String firstName;
     private String lastName;
+
+    private Author() {
+        this.id = UUID.randomUUID().toString();
+    }
+
 
     public Author(String firstname, String lastname) {
         this.id = UUID.randomUUID().toString();

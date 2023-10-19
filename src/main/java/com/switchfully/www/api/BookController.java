@@ -29,7 +29,7 @@ public class BookController {
 
     @POST
     @ResponseStatus(201)
-    public Response createBook(@RestHeader String authorization,CreateBookDto createBookDto) {
+    public Response createBook(@RestHeader String authorization, CreateBookDto createBookDto) {
         securityService.validateAuthorization(authorization, Feature.MANAGE_BOOKS);
         return Response.status(201).entity(bookService.createBook(createBookDto)).build();
     }
