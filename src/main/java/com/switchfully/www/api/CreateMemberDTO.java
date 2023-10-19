@@ -1,6 +1,7 @@
 package com.switchfully.www.api;
 
 import com.switchfully.www.domain.Address;
+import com.switchfully.www.domain.UserRole;
 import com.switchfully.www.domain.dto.MemberDto;
 
 public class CreateMemberDTO {
@@ -11,6 +12,16 @@ public class CreateMemberDTO {
     private String email;
     private String password;
     private Address address;
+
+    public UserRole getRole() {
+        return role;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
+    }
+
+    private UserRole role;
 
     public CreateMemberDTO () {
     }

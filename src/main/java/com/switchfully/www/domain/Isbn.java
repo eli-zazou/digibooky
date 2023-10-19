@@ -1,9 +1,16 @@
 package com.switchfully.www.domain;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Objects;
 
 public class Isbn {
     private String isbn;
+
+    private Isbn() {
+    }
+
 
     public Isbn(String isbn) {
 //        if (!isValidIsbn()) throw new IllegalArgumentException("This ISBN is not valid.");
@@ -20,7 +27,7 @@ public class Isbn {
     }
 
     public boolean isValidIsbn(String isbn) {
-        if (isbn==null) return false;
+        if (isbn == null) return false;
         if (isbn.length() != 13) return false;
         if (!this.isbn.matches("[0-9]+")) return false;
         return true;
