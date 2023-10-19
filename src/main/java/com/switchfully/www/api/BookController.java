@@ -15,6 +15,7 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class BookController {
+
     private final BookService bookService;
 
     public BookController(BookService bookService) {
@@ -73,6 +74,7 @@ public class BookController {
     @Path("/{id}")
     @ResponseStatus(202)
     public Response deleteBook(@PathParam("id") String id) {
-        return null;
+        //return bookService.deleteBookById(id);
+        return Response.status(201).entity(bookService.deleteBookById(id)).build();
     }
 }
