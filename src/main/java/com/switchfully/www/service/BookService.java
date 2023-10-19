@@ -46,7 +46,12 @@ public class BookService {
     public BookDto createBook(CreateBookDto createBookDto) {
         Book bookToSave = new Book(createBookDto.getIsbn(), createBookDto.getTitle(), createBookDto.getSummary(), createBookDto.getAuthor());
 
-        return bookMapper.mapToDTO(bookRepository.save(bookToSave));
+        return bookMapper.mapToDTO(bookRepository.addBook(bookToSave));
+    }
+
+    public Boolean deleteBookById(String id){
+        return bookRepository.delete(bookRepository.getById(id)
+                .orElseThrow(()->new IllegalArgumentException("No Book could be found for id " + id)));
     }
 
     public BookDto getBookById(String id) {
@@ -55,4 +60,6 @@ public class BookService {
                         .getById(id)
                         .orElseThrow(() -> new IllegalArgumentException("No Book could be found for id " + id)));
     }
+
+
 }

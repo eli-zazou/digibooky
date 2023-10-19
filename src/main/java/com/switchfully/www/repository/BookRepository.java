@@ -20,11 +20,16 @@ public class BookRepository {
         return Optional.ofNullable(booksById.get(Id));
     }
 
-    public Book save(Book book) {
+    public Book addBook(Book book) {
         booksById.put(book.getId(), book);
         return book;
     }
 
+    public boolean delete(Book book){
+        //TO DO check if the book is lended by a member
+        Book isDeleted = booksById.remove(book.getId());
+        return isDeleted != null;
+    }
 
     public Collection<Book> getByAuthor(String author) {
         return booksById.values().stream().filter(book -> book.getAuthor().getLastname().equalsIgnoreCase(author)).collect(Collectors.toList());

@@ -1,17 +1,17 @@
-package com.switchfully.www.api;
+package com.switchfully.www.domain.dto;
 
 import com.switchfully.www.domain.Address;
-import com.switchfully.www.domain.dto.MemberDto;
 
-public class CreateMemberDTO {
-
+public class MemberDto {
+    private String id;
     private String inss;
     private String lastName;
     private String firstName;
     private String email;
     private Address address;
 
-    public CreateMemberDTO () {
+    public String getId() {
+        return id;
     }
 
     public String getInss() {
@@ -34,27 +34,32 @@ public class CreateMemberDTO {
         return address;
     }
 
-    public CreateMemberDTO setInss(String inss) {
+    public MemberDto setId(String id) {
+        this.id = id;
+        return this;
+    }
+
+    public MemberDto setInss(String inss) {
         this.inss = inss;
         return this;
     }
 
-    public CreateMemberDTO setLastName(String lastName) {
+    public MemberDto setLastName(String lastName) {
         this.lastName = lastName;
         return this;
     }
 
-    public CreateMemberDTO setFirstName(String firstName) {
+    public MemberDto setFirstName(String firstName) {
         this.firstName = firstName;
         return this;
     }
 
-    public CreateMemberDTO setEmail(String email) {
+    public MemberDto setEmail(String email) {
         this.email = email;
         return this;
     }
 
-    public CreateMemberDTO setAddress(Address address) {
+    public MemberDto setAddress(Address address) {
         this.address = address;
         return this;
     }

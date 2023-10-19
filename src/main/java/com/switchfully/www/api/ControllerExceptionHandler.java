@@ -14,4 +14,5 @@ public class ControllerExceptionHandler {
         LOG.info(illegalArgumentException.getMessage());
         return Response.status(Response.Status.BAD_REQUEST).entity(illegalArgumentException.getMessage()).build();
     }
+
 }
