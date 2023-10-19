@@ -26,14 +26,13 @@ public class BookRepository {
         return book;
     }
 
-    public boolean delete(Book book){
+    public boolean delete(Book book) {
         // TODO check if the book is lended by a member
-        if (book.getDateDeleted() != null){
+        if (book.getDateDeleted() != null) {
             book.setDateDeleted(LocalDateTime.now());
             return true;
-        }else{
-            return false;
         }
+        return false;
     }
 
     public Collection<Book> getByAuthor(String author) {
