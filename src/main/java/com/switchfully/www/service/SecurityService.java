@@ -31,7 +31,7 @@ public class SecurityService {
         DecodedCredentials credentials = getUsernamePassword(Optional.ofNullable(authorization)
                 .orElseThrow(() -> new UnauthorizatedException("You do not have authorization")));
         Member user = memberRepository.getByEmail(credentials.getEmail())
-                .orElseThrow(() -> throwUserUnknownException(credentials.getEmail()));
+                .orElseThrow(() -> new UnauthorizatedException("Unknown user "+ credentials.getEmail()));
 
         if (!user.doesPasswordMatch(credentials.getPassword())) {
             // LOG.info(illegalArgumentException.getMessage());
@@ -46,11 +46,6 @@ public class SecurityService {
             throw new UnauthorizatedException("User "+credentials.getEmail()+" does not have access to "+ feature.toString());
         }
 
-    }
-
-    private UnknownUserException throwUserUnknownException(String username) {
-        LOG.errorf("Unknown user %s", username);
-        return new UnknownUserException();
     }
 
     private DecodedCredentials getUsernamePassword(String authorization) {
