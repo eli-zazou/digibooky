@@ -1,9 +1,6 @@
 package com.switchfully.www.repository;
 
-import com.switchfully.www.domain.Address;
-import com.switchfully.www.domain.Feature;
-import com.switchfully.www.domain.Member;
-import com.switchfully.www.domain.UserRole;
+import com.switchfully.www.domain.*;
 import com.switchfully.www.exceptions.UnauthorizatedException;
 import jakarta.enterprise.context.ApplicationScoped;
 
@@ -59,7 +56,8 @@ public class MemberRepository {
     }
 
     private void createFirstAdmin(){
-        Member admin = new Member("1", "admin", "admin", "admin@test.com", "12346", new Address(), UserRole.ADMIN);
+        Address address = new Address("Rue Henri Maus", "25", new City("1000", "Brussels"));
+        Member admin = new Member("1", "admin", "admin", "admin@test.com", "12346",address, UserRole.ADMIN);
         this.memberById.put(admin.getId(), admin);
     }
 

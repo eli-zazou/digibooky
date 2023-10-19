@@ -18,6 +18,7 @@ public class MemberService {
 
     public MemberService(MemberRepository memberRepository, MemberMapper memberMapper){
         this.memberRepository = memberRepository;
+        this.memberMapper = memberMapper;
     }
 
     public MemberDto createMember(CreateMemberDTO createMemberDTO) {
