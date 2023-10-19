@@ -17,12 +17,6 @@ public class Member {
     private LocalDateTime dateDeleted;
     private LocalDateTime dateUpdated;
 
-    /*
-
-The INSS should be filled in
-The last name and city should be filled in.
-    * */
-
     public Member(String inss, String lastName, String firstName, String email, String password, Address address, UserRole role)  throws IllegalArgumentException {
         this.id = UUID.randomUUID().toString();
         setInss(inss);
