@@ -34,14 +34,11 @@ public class SecurityService {
                 .orElseThrow(() -> new UnauthorizatedException("Unknown user "+ credentials.getEmail()));
 
         if (!user.doesPasswordMatch(credentials.getPassword())) {
-            // LOG.info(illegalArgumentException.getMessage());
             LOG.errorf("Password does not match for user %s", credentials.getEmail());
             throw new WrongPasswordException("Password does not match for user " + credentials.getEmail());
         }
 
         if (!user.canHaveAccessTo(feature)) {
-            // LOG.info(illegalArgumentException.getMessage());
-
             LOG.error(format("User %s does not have access to %s", credentials.getEmail(), feature));
             throw new UnauthorizatedException("User "+credentials.getEmail()+" does not have access to "+ feature.toString());
         }

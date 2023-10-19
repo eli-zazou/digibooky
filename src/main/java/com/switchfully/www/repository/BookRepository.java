@@ -36,15 +36,15 @@ public class BookRepository {
     }
 
     public Collection<Book> getByAuthor(String author) {
-        return booksById.values().stream().filter(book -> book.getAuthor().getLastName().contains(author)).collect(Collectors.toList());
+        return booksById.values().stream().filter(book -> book.getAuthor().getLastName().equalsIgnoreCase(author)).collect(Collectors.toList());
     }
 
-    public Collection<Book> getByIsbn(String author) {
-        return booksById.values().stream().filter(book -> book.getIsbn().getIsbn().equalsIgnoreCase(author)).collect(Collectors.toList());
+    public Collection<Book> getByIsbn(String isbn) {
+        return booksById.values().stream().filter(book -> book.getIsbn().getIsbn().equalsIgnoreCase(isbn)).collect(Collectors.toList());
     }
 
-    public Collection<Book> getByTitle(String author) {
-        return booksById.values().stream().filter(book -> book.getTitle().equalsIgnoreCase(author)).collect(Collectors.toList());
+    public Collection<Book> getByTitle(String title) {
+        return booksById.values().stream().filter(book -> book.getTitle().equalsIgnoreCase(title)).collect(Collectors.toList());
     }
 
 
