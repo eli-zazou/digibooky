@@ -82,6 +82,9 @@ public class Book {
     }
 
     public void setSummary(String summary) {
+        if (summary == null) {
+            return;
+        }
         this.summary = summary;
     }
 
