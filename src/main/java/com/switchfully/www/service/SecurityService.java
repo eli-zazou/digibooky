@@ -26,27 +26,27 @@ public class SecurityService {
     public void validateAuthorization(@Nullable String authorization, Feature feature) {
         DecodedCredentials credentials = getUsernamePassword(Optional.ofNullable(authorization)
                 .orElseThrow(() -> new UnauthorizatedException("You do not have authorization")));
-        Member user = memberRepository.getByEmail(credentials.getEmail())
-                .orElseThrow(() -> throwUserUnknownException(credentials.getUsername()));
-
-        if (!user.doesPasswordMatch(credentials.getPassword())) {
-            // LOG.info(illegalArgumentException.getMessage());
-            logger.errorf("Password does not match for user %s", credentials.getUsername());
-            throw new WrongPasswordException();
-        }
-
-        if (!user.canHaveAccessTo(feature)) {
-            // LOG.info(illegalArgumentException.getMessage());
-
-            logger.error(format("User %s does not have access to %s", credentials.getUsername(), feature));
-            throw new UnauthorizatedException();
-        }
-
-    }
-
-    private UnknownUserException throwUserUnknownException(String username) {
-        logger.errorf("Unknown user %s", username);
-        return new UnknownUserException();
+//        Member user = memberRepository.getByEmail(credentials.getEmail())
+//                .orElseThrow(() -> throwUserUnknownException(credentials.getUsername()));
+//
+//        if (!user.doesPasswordMatch(credentials.getPassword())) {
+//            // LOG.info(illegalArgumentException.getMessage());
+//            logger.errorf("Password does not match for user %s", credentials.getUsername());
+//            throw new WrongPasswordException();
+//        }
+//
+//        if (!user.canHaveAccessTo(feature)) {
+//            // LOG.info(illegalArgumentException.getMessage());
+//
+//            logger.error(format("User %s does not have access to %s", credentials.getUsername(), feature));
+//            throw new UnauthorizatedException();
+//        }
+//
+//    }
+//
+//    private UnknownUserException throwUserUnknownException(String username) {
+//        logger.errorf("Unknown user %s", username);
+//        return new UnknownUserException();
     }
 
     private DecodedCredentials getUsernamePassword(String authorization) {

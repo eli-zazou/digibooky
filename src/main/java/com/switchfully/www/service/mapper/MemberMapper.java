@@ -36,6 +36,7 @@ public class MemberMapper {
                 createMemberDTO.getLastName(),
                 createMemberDTO.getFirstName(),
                 createMemberDTO.getEmail(),
+                createMemberDTO.getPassword(),
                 createMemberDTO.getAddress(),
                 UserRole.MEMBER);
     }

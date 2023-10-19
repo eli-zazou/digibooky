@@ -9,6 +9,7 @@ public class CreateMemberDTO {
     private String lastName;
     private String firstName;
     private String email;
+    private String password;
     private Address address;
 
     public CreateMemberDTO () {
@@ -28,6 +29,10 @@ public class CreateMemberDTO {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public Address getAddress() {
@@ -51,6 +56,11 @@ public class CreateMemberDTO {
 
     public CreateMemberDTO setEmail(String email) {
         this.email = email;
+        return this;
+    }
+
+    public CreateMemberDTO setPassword(String password) {
+        this.password = password;
         return this;
     }
 
