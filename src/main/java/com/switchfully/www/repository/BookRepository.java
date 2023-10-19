@@ -27,7 +27,7 @@ public class BookRepository {
     }
 
     public boolean delete(Book book){
-        //TO DO check if the book is lended by a member
+        // TODO check if the book is lended by a member
         if (book.getDateDeleted() != null){
             book.setDateDeleted(LocalDateTime.now());
             return true;
@@ -50,7 +50,6 @@ public class BookRepository {
 
 
     public Collection<Book> getAllBooks() {
-
         return booksById.values();
     }
 }

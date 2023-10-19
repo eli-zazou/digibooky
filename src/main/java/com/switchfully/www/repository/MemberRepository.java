@@ -47,8 +47,11 @@ public class MemberRepository {
     }
 
     public Optional<Member> getByEmail(String email) {
-     //   return Optional.ofNullable(memberById.get(id));
-        return null;
+        return memberById
+                .values()
+                .stream()
+                .filter(member -> member.getEmail().equals(email))
+                .findFirst();
     }
 
     public Member authenticate(String email, String password) {
