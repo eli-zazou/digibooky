@@ -41,4 +41,14 @@ public class MemberMapper {
                 UserRole.MEMBER);
     }
 
+    public Member mapToEntityAdmin (CreateMemberDTO createMemberDTO){
+        return new Member(createMemberDTO.getInss(),
+                createMemberDTO.getLastName(),
+                createMemberDTO.getFirstName(),
+                createMemberDTO.getEmail(),
+                createMemberDTO.getPassword(),
+                createMemberDTO.getAddress(),
+                createMemberDTO.getRole());
+    }
+
 }
