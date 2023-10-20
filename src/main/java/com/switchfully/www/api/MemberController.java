@@ -42,7 +42,7 @@ public class MemberController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @ResponseStatus(201)
-    public MemberDto createAdminOrLibrerian(@RestHeader String authorization,  CreateMemberDTO createMemberDTO){
+    public MemberDto createAdminOrLibrarian(@RestHeader String authorization,  CreateMemberDTO createMemberDTO){
         // TODO verify if we can make one feature like manage_user
         securityService.validateAuthorization(authorization, Feature.ADD_ADMIN);
         return memberService.createAdminOrLibrarian(createMemberDTO);
