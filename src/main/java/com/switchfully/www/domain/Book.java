@@ -1,5 +1,6 @@
 package com.switchfully.www.domain;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,12 +15,14 @@ public class Book {
     private LocalDateTime dateCreated;
     private LocalDateTime dateDeleted;
     private LocalDateTime dateUpdated;
+    private BookStatus bookStatus;
 
     public Book(Isbn isbn, String title, String summary, Author author) {
         this.id = UUID.randomUUID().toString();
         this.dateCreated = LocalDateTime.now();
         this.dateDeleted = null;
         this.dateUpdated = null;
+        this.bookStatus = BookStatus.AVAILABLE;
         setIsbn(isbn);
         setTitle(title);
         this.summary = summary;
@@ -52,6 +55,10 @@ public class Book {
 
     public String getAuthorFullname() {
         return author.getFullName();
+    }
+
+    public BookStatus getBookStatus() {
+        return bookStatus;
     }
 
     public LocalDateTime getDateCreated() {
@@ -94,6 +101,10 @@ public class Book {
             throw new IllegalArgumentException("Please provide an author for the book");
         }
         this.author = author;
+    }
+
+    public void setBookStatus(BookStatus bookStatus) {
+        this.bookStatus = bookStatus;
     }
 
     public Book changeTitle(String title) {
@@ -141,6 +152,7 @@ public class Book {
         return Objects.equals(id, book.id) && Objects.equals(isbn, book.isbn) && Objects.equals(title, book.title) && Objects.equals(summary, book.summary) && Objects.equals(author, book.author);
     }
 
+
     @Override
     public int hashCode() {
         return Objects.hash(id, isbn);
@@ -148,6 +160,10 @@ public class Book {
 
     public boolean isDeleted() {
         return dateDeleted != null;
+    }
+
+    public boolean isAvailableForRent() {
+        return !isDeleted() && getBookStatus() == BookStatus.AVAILABLE;
     }
 }
 
