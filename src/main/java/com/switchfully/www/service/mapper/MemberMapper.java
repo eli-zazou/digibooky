@@ -7,6 +7,7 @@ import com.switchfully.www.domain.UserRole;
 import com.switchfully.www.domain.dto.BookDto;
 import com.switchfully.www.domain.dto.CreateBookDto;
 import com.switchfully.www.domain.dto.MemberDto;
+import com.switchfully.www.domain.dto.UpdateBookDto;
 import jakarta.enterprise.context.ApplicationScoped;
 
 import java.util.List;
@@ -38,16 +39,6 @@ public class MemberMapper {
                 createMemberDTO.getPassword(),
                 createMemberDTO.getAddress(),
                 UserRole.MEMBER);
-    }
-
-    public Member mapToEntityAdmin (CreateMemberDTO createMemberDTO){
-        return new Member(createMemberDTO.getInss(),
-                createMemberDTO.getLastName(),
-                createMemberDTO.getFirstName(),
-                createMemberDTO.getEmail(),
-                createMemberDTO.getPassword(),
-                createMemberDTO.getAddress(),
-                createMemberDTO.getRole());
     }
 
 }

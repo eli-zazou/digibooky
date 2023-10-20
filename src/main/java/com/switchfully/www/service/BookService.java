@@ -53,20 +53,14 @@ public class BookService {
     }
 
     public BookDto updateBook(UpdateBookDto updateBookDto, String id) {
-        Book bookToUpdate = bookRepository
-                .getById(id)
-                .orElseThrow(() -> new NotFoundException("No Book could be found for id " + id));
-
-        bookToUpdate.setSummary(updateBookDto.getSummary());
-        bookToUpdate.setTitle(updateBookDto.getTitle());
-        bookToUpdate.setAuthor(updateBookDto.getAuthor());
-        bookToUpdate.setDateUpdated(LocalDateTime.now());
-
-        return bookMapper.mapToDTO(bookRepository.addBook(bookToUpdate));
+        return bookMapper.mapToDTO(
+                bookRepository
+                        .updateBookById(bookMapper.mapToEntity(updateBookDto), id)
+                        .orElseThrow(() -> new NotFoundException("No Book could be found for id " + id)));
     }
 
     public Boolean deleteBookById(String id) {
-        return bookRepository.delete(bookRepository.getById(id)
+        return bookRepository.deleteById(bookRepository.getById(id)
                 .orElseThrow(() -> new NotFoundException("No Book could be found for id " + id)));
     }
 
