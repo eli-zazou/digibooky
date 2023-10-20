@@ -49,6 +49,8 @@ public class BookRepository {
 
 
     public Collection<Book> getAllBooks() {
-        return booksById.values();
+        return booksById.values().stream()
+                .filter(book -> !(book.isDeleted()))
+                .collect(Collectors.toList());
     }
 }

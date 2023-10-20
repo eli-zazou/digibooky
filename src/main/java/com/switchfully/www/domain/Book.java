@@ -117,5 +117,9 @@ public class Book {
     public int hashCode() {
         return Objects.hash(id, isbn);
     }
+
+    public boolean isDeleted() {
+        return dateDeleted != null;
+    }
 }
 
