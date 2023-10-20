@@ -4,6 +4,7 @@ import com.switchfully.www.domain.Author;
 import com.switchfully.www.domain.Book;
 import com.switchfully.www.domain.Isbn;
 import com.switchfully.www.domain.dto.BookDto;
+import com.switchfully.www.exceptions.NotFoundException;
 import com.switchfully.www.repository.BookRepository;
 import com.switchfully.www.service.mapper.BookMapper;
 import org.assertj.core.api.Assertions;
@@ -12,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.util.List;
+import java.util.Optional;
 
 class BookServiceTest {
 
@@ -75,6 +77,46 @@ class BookServiceTest {
         Mockito.when(bookMapperMock.mapToDTO(List.of(book2))).thenReturn(List.of(bookDto2));
         // when
         List<BookDto> actualBooks = bookService.getBooksByAuthor("Rowling");
+        // then
+        Assertions.assertThat(actualBooks).containsExactlyInAnyOrder(bookDto2);
+    }
+
+    @Test
+    void getBookById_givenRepoWithBooks_thenReturnBookDTO() {
+        // given
+        Mockito.when(bookRepositoryMock.getById(book1.getId())).thenReturn(Optional.ofNullable(book1));
+        Mockito.when(bookMapperMock.mapToDTO(book1)).thenReturn(bookDto1);
+        // when
+        BookDto actualBookDto = bookService.getBookById(book1.getId());
+        // then
+        Assertions.assertThat(actualBookDto).isEqualTo(bookDto1);
+    }
+
+    @Test
+    void getBookById_givenBookNotInRepo_thenThrowNotFoundException() {
+        Assertions.assertThatThrownBy(() -> bookService.getBookById(book1.getId()))
+                .isInstanceOf(NotFoundException.class)
+                .hasMessage("No Book could be found for id " + book1.getId());
+    }
+
+    @Test
+    void getBooksByIsbn_givenRepoWithBooks_thenReturnBookDTO() {
+        // given
+        Mockito.when(bookRepositoryMock.getByIsbn("978-1338878929")).thenReturn(List.of(book2));
+        Mockito.when(bookMapperMock.mapToDTO(List.of(book2))).thenReturn(List.of(bookDto2));
+        // when
+        List<BookDto> actualBooks = bookService.getBooksByIsbn("978-1338878929");
+        // then
+        Assertions.assertThat(actualBooks).containsExactlyInAnyOrder(bookDto2);
+    }
+
+    @Test
+    void getBooksByTitle_givenRepoWithBooks_thenReturnBookDTO() {
+        // given
+        Mockito.when(bookRepositoryMock.getByTitle("Harry Potter Plays Chess")).thenReturn(List.of(book2));
+        Mockito.when(bookMapperMock.mapToDTO(List.of(book2))).thenReturn(List.of(bookDto2));
+        // when
+        List<BookDto> actualBooks = bookService.getBooksByTitle("Harry Potter Plays Chess");
         // then
         Assertions.assertThat(actualBooks).containsExactlyInAnyOrder(bookDto2);
     }

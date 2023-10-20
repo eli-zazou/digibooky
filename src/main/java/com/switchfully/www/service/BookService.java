@@ -67,14 +67,14 @@ public class BookService {
 
     public Boolean deleteBookById(String id) {
         return bookRepository.delete(bookRepository.getById(id)
-                .orElseThrow(() -> new IllegalArgumentException("No Book could be found for id " + id)));
+                .orElseThrow(() -> new NotFoundException("No Book could be found for id " + id)));
     }
 
     public BookDto getBookById(String id) {
         return bookMapper.mapToDTO(
                 bookRepository
                         .getById(id)
-                        .orElseThrow(() -> new IllegalArgumentException("No Book could be found for id " + id)));
+                        .orElseThrow(() -> new NotFoundException("No Book could be found for id " + id)));
     }
 
 
