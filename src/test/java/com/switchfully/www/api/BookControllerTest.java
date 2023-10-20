@@ -35,13 +35,13 @@ class BookControllerTest {
      */
 
     private BookService bookServiceMock;
-//    private SecurityService securityServiceMock;
+    //    private SecurityService securityServiceMock;
     private BookDto bookDto1;
     private BookDto bookDto2;
 
     @BeforeEach
     void setUp() {
-       bookServiceMock = Mockito.mock(BookService.class);
+        bookServiceMock = Mockito.mock(BookService.class);
 
         bookDto1 = new BookDto()
                 .setId(UUID.randomUUID().toString())
@@ -62,11 +62,11 @@ class BookControllerTest {
     void getAllBooks_givingBookService_getRestCallWithAllBooks() {
         // given
         List<BookDto> booksDto = List.of(bookDto1, bookDto2);
-       Mockito.when(bookServiceMock.getAllBooks()).thenReturn(booksDto);
+        Mockito.when(bookServiceMock.getAllBooks()).thenReturn(booksDto);
         // when
-       // List<BookDto> actualBooks = bookService.getAllBooks();
+        // List<BookDto> actualBooks = bookService.getAllBooks();
         // then
-       // Assertions.assertThat(actualBooks).containsExactlyInAnyOrder(bookDto1,bookDto2);
+        // Assertions.assertThat(actualBooks).containsExactlyInAnyOrder(bookDto1,bookDto2);
 
         List<BookDto> bookDTOList = given()
                 .when()

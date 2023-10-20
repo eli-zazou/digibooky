@@ -19,7 +19,7 @@ public class BookMapper {
                 .collect(Collectors.toList());
     }
 
-    public BookDto mapToDTO(Book book){
+    public BookDto mapToDTO(Book book) {
         return new BookDto()
                 .setId(book.getId())
                 .setIsbn(book.getIsbn())
@@ -28,11 +28,12 @@ public class BookMapper {
                 .setSummary(book.getSummary());
     }
 
-    public Book mapToEntity (CreateBookDto createBookDto){
-        return new Book(createBookDto.getIsbn(),createBookDto.getTitle(),createBookDto.getSummary(), createBookDto.getAuthor());
+    public Book mapToEntity(CreateBookDto createBookDto) {
+        return new Book(createBookDto.getIsbn(), createBookDto.getTitle(), createBookDto.getSummary(), createBookDto.getAuthor());
     }
 
-    public Book mapToEntity (UpdateBookDto updateBookDto){
-        return new Book(updateBookDto.getIsbn(),updateBookDto.getTitle(),updateBookDto.getSummary(), updateBookDto.getAuthor());
+    public Book mapToEntity(UpdateBookDto updateBookDto) {
+        // TODO check but updateBookDto shouldn't have isbn.
+        return new Book(null, updateBookDto.getTitle(), updateBookDto.getSummary(), updateBookDto.getAuthor());
     }
 }

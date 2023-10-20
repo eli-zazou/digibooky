@@ -19,7 +19,6 @@ public class BookRepository {
     }
 
 
-
     public Book addBook(Book book) {
         booksById.put(book.getId(), book);
         return book;
@@ -72,7 +71,7 @@ public class BookRepository {
         }
         return false;
     }
-    
+
     public Optional<Book> updateBookById(Book modifiedBook, String id) {
         Book bookToUpdate = booksById.get(id);
         if (bookToUpdate == null) {

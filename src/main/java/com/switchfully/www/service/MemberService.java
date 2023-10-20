@@ -16,7 +16,7 @@ public class MemberService {
     private MemberRepository memberRepository;
     private MemberMapper memberMapper;
 
-    public MemberService(MemberRepository memberRepository, MemberMapper memberMapper){
+    public MemberService(MemberRepository memberRepository, MemberMapper memberMapper) {
         this.memberRepository = memberRepository;
         this.memberMapper = memberMapper;
     }

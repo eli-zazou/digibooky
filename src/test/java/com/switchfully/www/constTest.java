@@ -27,14 +27,15 @@ public class constTest {
             anAdress,
             UserRole.MEMBER);
 
-    public static Member janeDoeMember =  new Member(
+    public static Member janeDoeMember = new Member(
             "223456789",
             "Doe",
             "Jane",
             "test@example.com",
             "1234",
             anAdress,
-            UserRole.MEMBER);;
+            UserRole.MEMBER);
+    ;
     public static Member johnDoe2Member = new Member(
             "123456789", // <---------- same INSS as John DOE
             "Doe",
@@ -42,5 +43,6 @@ public class constTest {
             "john2@example.com",
             "1234",
             anAdress,
-            UserRole.MEMBER);;
+            UserRole.MEMBER);
+    ;
 }

@@ -12,19 +12,10 @@ public class CreateMemberDTO {
     private String email;
     private String password;
     private Address address;
-
-    public UserRole getRole() {
-        return role;
-    }
-
-    public CreateMemberDTO setRole(UserRole role) {
-        this.role = role;
-        return this;
-    }
-
     private UserRole role;
 
-    public CreateMemberDTO () {
+
+    public CreateMemberDTO() {
     }
 
     public String getInss() {
@@ -49,6 +40,15 @@ public class CreateMemberDTO {
 
     public Address getAddress() {
         return address;
+    }
+
+    public UserRole getRole() {
+        return role;
+    }
+
+    public CreateMemberDTO setRole(UserRole role) {
+        this.role = role;
+        return this;
     }
 
     public CreateMemberDTO setInss(String inss) {

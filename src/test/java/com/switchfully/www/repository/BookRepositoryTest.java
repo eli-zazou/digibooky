@@ -31,8 +31,8 @@ class BookRepositoryTest {
     }
 
     @Test
-    void save_givenABook_thenBookIsInRepository(){
-        Book bookToSave = new Book(new Isbn("0123456789123"),"Title","Summary",new Author("firstname", "lastname"));
+    void save_givenABook_thenBookIsInRepository() {
+        Book bookToSave = new Book(new Isbn("0123456789123"), "Title", "Summary", new Author("firstname", "lastname"));
 
         Assertions.assertThat(bookToSave).isEqualTo(bookRepository.addBook(bookToSave));
     }
@@ -45,7 +45,7 @@ class BookRepositoryTest {
         // when
         Collection<Book> actualBooks = bookRepository.getAllBooks();
         // then
-        Assertions.assertThat(actualBooks).containsExactlyInAnyOrder(book1,book2);
+        Assertions.assertThat(actualBooks).containsExactlyInAnyOrder(book1, book2);
     }
 
     @Test

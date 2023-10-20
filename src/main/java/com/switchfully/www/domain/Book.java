@@ -75,10 +75,10 @@ public class Book {
     }
 
     public Book setIsbn(Isbn isbn) throws IllegalArgumentException {
-        if (isbn != null) {
-            this.isbn = isbn;
+        if (isbn == null) {
+            throw new IllegalArgumentException("ISBN of the book can't be empty");
         }
-//        throw new IllegalArgumentException("ISBN of the book can't be empty");
+        this.isbn = isbn;
         return this;
     }
 

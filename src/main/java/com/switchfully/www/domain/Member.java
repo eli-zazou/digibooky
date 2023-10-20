@@ -17,7 +17,7 @@ public class Member {
     private LocalDateTime dateDeleted;
     private LocalDateTime dateUpdated;
 
-    public Member(String inss, String lastName, String firstName, String email, String password, Address address, UserRole role)  throws IllegalArgumentException {
+    public Member(String inss, String lastName, String firstName, String email, String password, Address address, UserRole role) throws IllegalArgumentException {
         this.id = UUID.randomUUID().toString();
         setInss(inss);
         setLastName(lastName);
@@ -68,14 +68,14 @@ public class Member {
     }
 
     public void setInss(String inss) {
-        if(inss == null) {
+        if (inss == null) {
             throw new IllegalArgumentException("INSS can't be empty");
         }
         this.inss = inss;
     }
 
     public void setLastName(String lastName) {
-        if(lastName == null) {
+        if (lastName == null) {
             throw new IllegalArgumentException("Last name can't be empty");
         }
         this.lastName = lastName;
@@ -86,25 +86,25 @@ public class Member {
     }
 
     public void setEmail(String email) throws IllegalArgumentException {
-        if(!isValidEmail(email)){
+        if (!isValidEmail(email)) {
             throw new IllegalArgumentException("Please provide a valid e-mail address");
         }
         this.email = email;
     }
 
     public void setAddress(Address address) {
-        if(address == null) {
+        if (address == null) {
             throw new IllegalArgumentException("Address can't be empty");
         }
         this.address = address;
     }
 
-    private boolean isValidEmail(String email){
-      if(email==null) {
-          return false;
-      }
+    private boolean isValidEmail(String email) {
+        if (email == null) {
+            return false;
+        }
 
-      String emailRegexPattern = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
+        String emailRegexPattern = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
                 + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
         return Pattern.compile(emailRegexPattern)
                 .matcher(email)
@@ -118,6 +118,7 @@ public class Member {
     public boolean canHaveAccessTo(Feature feature) {
         return role.containsFeature(feature);
     }
+
     public LocalDateTime getDateCreated() {
         return dateCreated;
     }
@@ -141,7 +142,6 @@ public class Member {
     public void setDateUpdated(LocalDateTime dateUpdated) {
         this.dateUpdated = dateUpdated;
     }
-
 
 
 }

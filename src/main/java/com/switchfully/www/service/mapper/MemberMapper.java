@@ -22,7 +22,7 @@ public class MemberMapper {
                 .collect(Collectors.toList());
     }
 
-    public MemberDto mapToDTO(Member member){
+    public MemberDto mapToDTO(Member member) {
         return new MemberDto()
                 .setId(member.getId())
                 .setLastName(member.getLastName())
@@ -31,7 +31,7 @@ public class MemberMapper {
                 .setAddress(member.getAddress());
     }
 
-    public Member mapToEntity (CreateMemberDTO createMemberDTO){
+    public Member mapToEntity(CreateMemberDTO createMemberDTO) {
         return new Member(createMemberDTO.getInss(),
                 createMemberDTO.getLastName(),
                 createMemberDTO.getFirstName(),
@@ -41,4 +41,13 @@ public class MemberMapper {
                 UserRole.MEMBER);
     }
 
+    public Member mapToEntityAdmin(CreateMemberDTO createMemberDTO) {
+        return new Member(createMemberDTO.getInss(),
+                createMemberDTO.getLastName(),
+                createMemberDTO.getFirstName(),
+                createMemberDTO.getEmail(),
+                createMemberDTO.getPassword(),
+                createMemberDTO.getAddress(),
+                createMemberDTO.getRole());
+    }
 }
