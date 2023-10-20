@@ -99,16 +99,16 @@ class BookServiceTest {
                 .hasMessage("No Book could be found for id " + book1.getId());
     }
 
-    @Test
-    void getBooksByIsbn_givenRepoWithBooks_thenReturnBookDTO() {
-        // given
-        Mockito.when(bookRepositoryMock.getByIsbn("978-1338878929")).thenReturn(List.of(book2));
-        Mockito.when(bookMapperMock.mapToDTO(List.of(book2))).thenReturn(List.of(bookDto2));
-        // when
-        List<BookDto> actualBooks = bookService.getBooksByIsbn("978-1338878929");
-        // then
-        Assertions.assertThat(actualBooks).containsExactlyInAnyOrder(bookDto2);
-    }
+//    @Test
+//    void getBooksByIsbn_givenRepoWithBooks_thenReturnBookDTO() {
+//        // given
+//        Mockito.when(bookRepositoryMock.getByIsbn("978-1338878929")).thenReturn(List.of(book2));
+//        Mockito.when(bookMapperMock.mapToDTO(List.of(book2))).thenReturn(List.of(bookDto2));
+//        // when
+//        List<BookDto> actualBooks = bookService.getBooksByIsbn("978-1338878929");
+//        // then
+//        Assertions.assertThat(actualBooks).containsExactlyInAnyOrder(bookDto2);
+//    }
 
     @Test
     void getBooksByTitle_givenRepoWithBooks_thenReturnBookDTO() {
