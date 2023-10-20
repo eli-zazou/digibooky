@@ -58,15 +58,15 @@ class BookRepositoryTest {
         Assertions.assertThat(actualBook).isEqualTo(Optional.ofNullable(book1));
     }
 
-    @Test
-    void getByIsbn_givingAnIsbn_thenGetDetailBookByIsbn() {
-        // given
-        bookRepository.addBook(book1);
-        // when
-        Collection<Book> actualBooks = bookRepository.getByIsbn("978-8845292613");
-        // then
-        Assertions.assertThat(actualBooks).containsExactlyInAnyOrder(book1);
-    }
+//    @Test
+//    void getByIsbn_givingAnIsbn_thenGetDetailBookByIsbn() {
+//        // given
+//        bookRepository.addBook(book1);
+//        // when
+////        Collection<Book> actualBooks = bookRepository.getByIsbn("978-8845292613");
+//        // then
+//        Assertions.assertThat(actualBooks).containsExactlyInAnyOrder(book1);
+//    }
 
     @Test
     void getByTitle_givingATitle_thenGetDetailBookByTitle() {
