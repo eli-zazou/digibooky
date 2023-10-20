@@ -17,7 +17,7 @@ class IsbnTest {
     @Test
     @DisplayName("ISBN is 13 digits long")
     void isValidIsbn_givenAnISBN_thenVerifyLengthEquals13(){
-        String result = isbn.getIsbnIdentifier();
+        String result = isbn.getIsbn();
 
 
 

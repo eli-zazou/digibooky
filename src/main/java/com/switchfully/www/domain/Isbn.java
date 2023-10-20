@@ -3,7 +3,7 @@ package com.switchfully.www.domain;
 import java.util.Objects;
 
 public class Isbn {
-    private String isbnIdentifier;
+    private String isbn;
 
     private Isbn() {
     }
@@ -12,21 +12,21 @@ public class Isbn {
     public Isbn(String isbn) {
 //        if (!isValidIsbn()) throw new IllegalArgumentException("This ISBN is not valid.");
 
-        this.isbnIdentifier = isbn;
+        this.isbn = isbn;
     }
 
-    public String getIsbnIdentifier() {
-        return isbnIdentifier;
+    public String getIsbn() {
+        return isbn;
     }
 
-    public void setIsbnIdentifier(String isbnIdentifier) {
-        this.isbnIdentifier = isbnIdentifier;
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 
     public boolean isValidIsbn(String isbn) {
         if (isbn == null) return false;
         if (isbn.length() != 13) return false;
-        if (!this.isbnIdentifier.matches("[0-9]+")) return false;
+        if (!this.isbn.matches("[0-9]+")) return false;
         return true;
 //        int sum = 0;
 //        for (int count = 0; count < 12; count++) {
@@ -45,12 +45,12 @@ public class Isbn {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Isbn isbn1)) return false;
-        return Objects.equals(isbnIdentifier, isbn1.isbnIdentifier);
+        return Objects.equals(isbn, isbn1.isbn);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(isbnIdentifier);
+        return Objects.hash(isbn);
     }
 }
 

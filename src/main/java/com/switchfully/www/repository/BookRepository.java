@@ -73,4 +73,15 @@ public class BookRepository {
         }
         return false;
     }
+
+    public Optional<Book> updateBookById(Book modifiedBook, String id) {
+        Book bookToUpdate = booksById.get(id);
+
+        if (bookToUpdate == null) {
+            return Optional.empty();
+        }
+
+        return Optional.of(bookToUpdate.update(modifiedBook));
+
+    }
 }

@@ -43,7 +43,7 @@ public class BookDto {
     }
 
     public String getIsbn() {
-        return isbn.getIsbnIdentifier();
+        return isbn.getIsbn();
     }
 
     public String getTitle() {

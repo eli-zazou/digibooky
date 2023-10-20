@@ -1,9 +1,8 @@
 package com.switchfully.www.domain;
 
-import java.nio.file.LinkOption;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.UUID;
 
 public class Book {
@@ -35,8 +34,8 @@ public class Book {
         return isbn;
     }
 
-    public String getIsbnIdentifier(){
-        return isbn.getIsbnIdentifier();
+    public String getIsbnIdentifier() {
+        return isbn.getIsbn();
     }
 
     public String getTitle() {
@@ -51,7 +50,7 @@ public class Book {
         return author;
     }
 
-    public String getAuthorFullname(){
+    public String getAuthorFullname() {
         return author.getFullName();
     }
 
@@ -75,32 +74,53 @@ public class Book {
         this.dateUpdated = dateUpdated;
     }
 
-    public void setIsbn(Isbn isbn) throws IllegalArgumentException {
-        if(isbn==null) {
-            throw new IllegalArgumentException("ISBN of the book can't be empty");
+    public Book setIsbn(Isbn isbn) throws IllegalArgumentException {
+        if (isbn != null) {
+            this.isbn = isbn;
         }
-        this.isbn = isbn;
+//        throw new IllegalArgumentException("ISBN of the book can't be empty");
+        return this;
     }
 
     public void setTitle(String title) {
-        if(title==null) {
+        if (title == null) {
             throw new IllegalArgumentException("Please provide a title for the book");
         }
         this.title = title;
     }
 
-    public void setSummary(String summary) {
-        if (summary == null) {
-            throw new IllegalArgumentException("Please provide a summary ");
-        }
-        this.summary = summary;
-    }
-
     public void setAuthor(Author author) {
-        if(author==null) {
+        if (author == null) {
             throw new IllegalArgumentException("Please provide an author for the book");
         }
         this.author = author;
+    }
+
+    public Book changeTitle(String title) {
+        if (title != null) {
+            this.title = title;
+        }
+        return this;
+    }
+
+    public Book changeSummary(String summary) {
+        if (summary != null) {
+            this.summary = summary;
+        }
+        return this;
+    }
+
+    public Book changeAuthor(Author author) {
+        if (author != null) {
+            this.author = author;
+        }
+        return this;
+    }
+
+    public Book update(Book modifiedBook) {
+        return this.changeTitle(modifiedBook.getTitle())
+                .changeSummary(modifiedBook.getSummary())
+                .changeAuthor(modifiedBook.getAuthor());
     }
 
     @Override
