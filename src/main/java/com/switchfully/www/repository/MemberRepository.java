@@ -27,19 +27,10 @@ public class MemberRepository {
         return member;
     }
 
-    public Member addAdminOrLibrarian(Member User){
-        // TODO need to check Inss and throw error if already there.
-        if(memberById.containsValue(User)){
-            throw new IllegalArgumentException("This member already exists.");
-        }
-        memberById.put(User.getId(), User);
-        return User;
-
-    }
-
     public Collection<Member> getAllMember() {
         return memberById.values();
     }
+
     public Optional<Member> getMemberById(String id) {
         return Optional.ofNullable(memberById.get(id));
     }
@@ -52,9 +43,6 @@ public class MemberRepository {
                 .findFirst();
     }
 
-    public Member authenticate(String email, String password) {
-        return memberById.values().stream().filter(x -> x.getEmail().equals(email) && x.getPassword().equals(password)).findFirst().get();
-    }
 
     private void createFirstAdmin(){
         Member admin = new Member("1", "admin", "admin", "admin@test.com", "12346", new Address("Stationsstraat","80",new City("8000","Brugge")), UserRole.ADMIN);

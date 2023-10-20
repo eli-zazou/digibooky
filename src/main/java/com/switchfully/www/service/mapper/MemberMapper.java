@@ -24,7 +24,6 @@ public class MemberMapper {
     public MemberDto mapToDTO(Member member){
         return new MemberDto()
                 .setId(member.getId())
-                .setInss(member.getInss())
                 .setLastName(member.getLastName())
                 .setFirstName(member.getFirstName())
                 .setEmail(member.getEmail())

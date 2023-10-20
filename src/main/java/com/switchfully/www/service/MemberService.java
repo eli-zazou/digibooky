@@ -28,7 +28,7 @@ public class MemberService {
 
     public MemberDto createAdminOrLibrarian(CreateMemberDTO createMemberDTO) {
         Member memberToAdd = memberMapper.mapToEntityAdmin(createMemberDTO);
-        return memberMapper.mapToDTO(memberRepository.addAdminOrLibrarian(memberToAdd));
+        return memberMapper.mapToDTO(memberRepository.addMember(memberToAdd));
     }
 
 

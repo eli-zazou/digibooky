@@ -4,7 +4,6 @@ import com.switchfully.www.domain.Address;
 
 public class MemberDto {
     private String id;
-    private String inss;
     private String lastName;
     private String firstName;
     private String email;
@@ -12,10 +11,6 @@ public class MemberDto {
 
     public String getId() {
         return id;
-    }
-
-    public String getInss() {
-        return inss;
     }
 
     public String getLastName() {
@@ -36,11 +31,6 @@ public class MemberDto {
 
     public MemberDto setId(String id) {
         this.id = id;
-        return this;
-    }
-
-    public MemberDto setInss(String inss) {
-        this.inss = inss;
         return this;
     }
 

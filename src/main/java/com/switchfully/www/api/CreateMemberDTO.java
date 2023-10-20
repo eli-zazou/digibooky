@@ -17,8 +17,9 @@ public class CreateMemberDTO {
         return role;
     }
 
-    public void setRole(UserRole role) {
+    public CreateMemberDTO setRole(UserRole role) {
         this.role = role;
+        return this;
     }
 
     private UserRole role;
