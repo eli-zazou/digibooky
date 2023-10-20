@@ -14,6 +14,7 @@ import com.switchfully.www.service.mapper.RentalMapper;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.ws.rs.core.Response;
 
+import java.util.List;
 import java.util.Optional;
 
 @ApplicationScoped
@@ -23,7 +24,6 @@ public class RentalService {
     private final MemberRepository memberRepository;
     private final RentalRepository rentalRepository;
     private final RentalMapper rentalMapper;
-
 
     public RentalService(BookRepository bookRepository, MemberRepository memberRepository, RentalRepository rentalRepository, RentalMapper rentalMapper) {
         this.bookRepository = bookRepository;
@@ -54,5 +54,9 @@ public class RentalService {
         }
          rentalRepository.removeRental(rentalToDelete);
         return Response.status(200).build();
+    }
+
+    public List<RentalDto> getRentalByMember(String id){
+     return rentalMapper.mapToDTO(rentalRepository.getRentalByMember(id).stream().toList());
     }
 }
