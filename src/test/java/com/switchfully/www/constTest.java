@@ -36,7 +36,7 @@ public class constTest {
             anAdress,
             UserRole.MEMBER);;
     public static Member johnDoe2Member = new Member(
-            "123456789",
+            "123456789", // <---------- same INSS as John DOE
             "Doe",
             "John2",
             "john2@example.com",
