@@ -5,10 +5,7 @@ import com.switchfully.www.domain.Member;
 import com.switchfully.www.domain.Rental;
 import jakarta.enterprise.context.ApplicationScoped;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @ApplicationScoped
 public class RentalRepository {

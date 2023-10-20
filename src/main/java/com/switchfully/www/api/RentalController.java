@@ -49,4 +49,9 @@ public class RentalController {
         return rentalService.returnBook(id);
     }
 
+    @GET
+    public List<BookDto> returnOverdueBook(@RestHeader String authorization){
+        return rentalService.getOverdueBooks();
+    }
+
 }
