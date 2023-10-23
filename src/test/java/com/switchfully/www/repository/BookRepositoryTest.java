@@ -32,9 +32,9 @@ class BookRepositoryTest {
 
     @Test
     void save_givenABook_thenBookIsInRepository() {
-        Book bookToSave = new Book("0123456789123", "Title", "Summary", new Author("firstname", "lastname"));
+        Book bookToSave = new Book("9781484278680", "Title", "Summary", new Author("firstname", "lastname"));
 
-        Assertions.assertThat(bookToSave).isEqualTo(bookRepository.addBook(bookToSave));
+        Assertions.assertThat(bookToSave).isEqualTo(bookRepository.addBook(bookToSave).orElseThrow());
     }
 
     @Test

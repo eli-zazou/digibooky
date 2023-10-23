@@ -1,9 +1,9 @@
 package com.switchfully.www.api;
 
-import com.switchfully.www.domain.security.Feature;
 import com.switchfully.www.domain.dto.BookDto;
 import com.switchfully.www.domain.dto.CreateRentalDto;
 import com.switchfully.www.domain.dto.RentalDto;
+import com.switchfully.www.domain.security.Feature;
 import com.switchfully.www.service.RentalService;
 import com.switchfully.www.service.SecurityService;
 import jakarta.ws.rs.*;
@@ -49,6 +49,7 @@ public class RentalController {
         return rentalService.returnBook(id);
     }
 
+    @Path("/overdue")
     @GET
     public List<BookDto> returnOverdueBook(@RestHeader String authorization) {
         return rentalService.getOverdueBooks();
