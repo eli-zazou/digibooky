@@ -25,7 +25,10 @@ public class BookMapper {
                 .setIsbn(book.getIsbn())
                 .setTitle(book.getTitle())
                 .setAuthor(book.getAuthor())
-                .setSummary(book.getSummary());
+                .setSummary(book.getSummary())
+                .setBookStatus(book.getBookStatus())
+                .setRentedPerson(book.getBorrowedTo())
+                .setDateOfReturn(book.getDateOfReturn());
     }
 
     public Book mapToEntity(CreateBookDto createBookDto) {

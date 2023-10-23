@@ -42,6 +42,8 @@ public class RentalService {
                 .orElseThrow(()-> new NotFoundException("No member could be found for this id."));
         Rental rental = new Rental(member, bookToRent);
         bookToRent.setBookStatus(BookStatus.BORROWED);
+        bookToRent.setBorrowedTo(member.getFirstName());
+        bookToRent.setDateOfReturn(rental.getDueDate());
         return rentalMapper.mapToDto(rentalRepository.addRental(rental));
     }
 
@@ -49,6 +51,8 @@ public class RentalService {
         Rental rentalToDelete = rentalRepository.getById(id)
                 .orElseThrow(() -> new NotFoundException("No Rental could be found for id " + id));
         rentalToDelete.getBook().setBookStatus(BookStatus.AVAILABLE);
+        rentalToDelete.getBook().setBorrowedTo(null);
+        rentalToDelete.getBook().setDateOfReturn(null);
         if(rentalToDelete.isOverDue()){
             return Response.status(402).build();
         }

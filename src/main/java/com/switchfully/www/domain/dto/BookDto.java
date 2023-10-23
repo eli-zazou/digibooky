@@ -1,7 +1,11 @@
 package com.switchfully.www.domain.dto;
 
 import com.switchfully.www.domain.Author;
+import com.switchfully.www.domain.BookStatus;
 import com.switchfully.www.domain.Isbn;
+import com.switchfully.www.domain.Member;
+
+import java.time.LocalDate;
 
 public class BookDto {
     private String id;
@@ -9,6 +13,11 @@ public class BookDto {
     private String title;
     private String summary;
     private Author author;
+
+    private BookStatus bookStatus;
+
+    private String rentedPerson;
+    private LocalDate dateOfReturn;
 
     public BookDto() {
     }
@@ -38,6 +47,18 @@ public class BookDto {
         return this;
     }
 
+    public BookStatus getBookStatus() {
+        return bookStatus;
+    }
+
+    public BookDto setBookStatus(BookStatus bookStatus) {
+        this.bookStatus = bookStatus;
+        if (bookStatus.equals(BookStatus.BORROWED)) {
+
+        }
+        return this;
+    }
+
     public String getId() {
         return id;
     }
@@ -56,5 +77,23 @@ public class BookDto {
 
     public Author getAuthor() {
         return author;
+    }
+
+    public String getRentedPerson() {
+        return rentedPerson;
+    }
+
+    public BookDto setRentedPerson(String rentedPerson) {
+        this.rentedPerson = rentedPerson;
+        return this;
+    }
+
+    public LocalDate getDateOfReturn() {
+        return dateOfReturn;
+    }
+
+    public BookDto setDateOfReturn(LocalDate dateOfReturn) {
+        this.dateOfReturn = dateOfReturn;
+        return this;
     }
 }

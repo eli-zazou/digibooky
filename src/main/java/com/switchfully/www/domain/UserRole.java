@@ -7,9 +7,9 @@ import static java.util.Arrays.asList;
 import static com.switchfully.www.domain.Feature.*;
 
 public enum UserRole {
-    ADMIN(asList(VIEW_MEMBERS, MANAGE_USER, ADD_ADMIN, MANAGE_BOOKS, BORROW_BOOKS)),
+    ADMIN(asList(VIEW_MEMBERS, MANAGE_USER, ADD_ADMIN, MANAGE_BOOKS, BORROW_BOOK)),
     LIBRARIAN(asList(MANAGE_BOOKS)),
-    MEMBER(asList(BORROW_BOOKS));
+    MEMBER(asList(BORROW_BOOK));
 
     private final List<Feature> featureList;
 

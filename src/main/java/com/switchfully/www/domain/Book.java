@@ -15,7 +15,9 @@ public class Book {
     private LocalDateTime dateCreated;
     private LocalDateTime dateDeleted;
     private LocalDateTime dateUpdated;
+    private LocalDate dateOfReturn;
     private BookStatus bookStatus;
+    private String borrowedTo;
 
     public Book(Isbn isbn, String title, String summary, Author author) {
         this.id = UUID.randomUUID().toString();
@@ -164,6 +166,24 @@ public class Book {
 
     public boolean isAvailableForRent() {
         return !isDeleted() && getBookStatus() == BookStatus.AVAILABLE;
+    }
+
+    public Book setBorrowedTo(String borrowedTo) {
+        this.borrowedTo = borrowedTo;
+        return this;
+    }
+
+    public String getBorrowedTo() {
+        return borrowedTo;
+    }
+
+    public LocalDate getDateOfReturn() {
+        return dateOfReturn;
+    }
+
+    public Book setDateOfReturn(LocalDate dateOfReturn) {
+        this.dateOfReturn = dateOfReturn;
+        return this;
     }
 }
 
