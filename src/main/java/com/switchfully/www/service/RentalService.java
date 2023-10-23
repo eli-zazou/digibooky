@@ -60,7 +60,7 @@ public class RentalService {
         if (rentalToDelete.isOverDue()) {
             return Response.status(402).build();
         }
-        if (rentalRepository.removeRental(rentalToDelete)) {
+        if (!rentalRepository.removeRental(rentalToDelete)) {
             throw new NotFoundException("Couldn't delete unexisting rental " + id);
         }
         return Response.status(200).build();
