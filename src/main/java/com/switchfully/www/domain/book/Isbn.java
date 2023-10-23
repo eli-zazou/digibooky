@@ -27,14 +27,14 @@ public class Isbn {
         String isbnC = isbn.replaceAll("-","");
         if (isbnC == null) return false;
         if (isbnC.length() != 13) return false;
-        if (!this.isbnNumber.matches("[0-9]+")) return false;
+        if (!isbnC.matches("[0-9]+")) return false;
         int sum = 0;
         for (int count = 0; count < 12; count++) {
-            int digit = this.isbnNumber.charAt(count) - '0';
+            int digit = isbnC.charAt(count) - '0';
             sum += (count % 2 == 0) ? digit : digit * 3;
         }
 
-        int checkDigit = this.isbnNumber.charAt(12) - '0';
+        int checkDigit = isbnC.charAt(12) - '0';
         int calculatedCheckDigit = (10 - (sum % 10)) % 10;
 
         return checkDigit == calculatedCheckDigit;
