@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 public class BookDto {
     private String id;
-    private Isbn isbn;
+    private String isbn;
     private String title;
     private String summary;
     private Author author;
@@ -24,7 +24,7 @@ public class BookDto {
         return this;
     }
 
-    public BookDto setIsbn(Isbn isbn) {
+    public BookDto setIsbn(String isbn) {
         this.isbn = isbn;
         return this;
     }
@@ -61,7 +61,7 @@ public class BookDto {
     }
 
     public String getIsbn() {
-        return isbn.getIsbn();
+        return isbn;
     }
 
     public String getTitle() {

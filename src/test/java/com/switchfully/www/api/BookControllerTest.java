@@ -39,14 +39,14 @@ class BookControllerTest {
 
         bookDto1 = new BookDto()
                 .setId(UUID.randomUUID().toString())
-                .setIsbn(new Isbn("978-8845292613"))
+                .setIsbn("978-8845292613")
                 .setTitle("The lord of the Rings")
                 .setAuthor(new Author("J.R.R", "Tolkien"))
                 .setSummary("Hobbit goes on a journey");
 
         bookDto2 = new BookDto()
                 .setId(UUID.randomUUID().toString())
-                .setIsbn(new Isbn("985-1234567485"))
+                .setIsbn("985-1234567485")
                 .setTitle("Harry goes bananas")
                 .setAuthor(new Author("J.K.", "Rowling"))
                 .setSummary("Wizzard boy goes to school");

@@ -4,7 +4,7 @@ import com.switchfully.www.domain.book.Author;
 import com.switchfully.www.domain.book.Isbn;
 
 public class CreateBookDto {
-    private Isbn isbn;
+    private String isbn;
     private String title;
     private String summary;
     private Author author;
@@ -13,7 +13,7 @@ public class CreateBookDto {
         //JACKSON
     }
 
-    public Isbn getIsbn() {
+    public String getIsbn() {
         return isbn;
     }
 
@@ -29,7 +29,7 @@ public class CreateBookDto {
         return author;
     }
 
-    public CreateBookDto setIsbn(Isbn isbn) {
+    public CreateBookDto setIsbn(String isbn) {
         this.isbn = isbn;
         return this;
     }
