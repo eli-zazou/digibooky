@@ -2,7 +2,6 @@ package com.switchfully.www.service;
 
 import com.switchfully.www.domain.book.Author;
 import com.switchfully.www.domain.book.Book;
-import com.switchfully.www.domain.book.Isbn;
 import com.switchfully.www.domain.dto.BookDto;
 import com.switchfully.www.exceptions.NotFoundException;
 import com.switchfully.www.repository.BookRepository;
@@ -63,11 +62,11 @@ class BookServiceTest {
         // given
         List<Book> books = List.of(book1, book2);
         Mockito.when(bookRepositoryMock.getAllBooks()).thenReturn(books);
-        Mockito.when(bookMapperMock.mapToDTO(books)).thenReturn(List.of(bookDto1,bookDto2));
+        Mockito.when(bookMapperMock.mapToDTO(books)).thenReturn(List.of(bookDto1, bookDto2));
         // when
         List<BookDto> actualBooks = bookService.getAllBooks();
         // then
-        Assertions.assertThat(actualBooks).containsExactlyInAnyOrder(bookDto1,bookDto2);
+        Assertions.assertThat(actualBooks).containsExactlyInAnyOrder(bookDto1, bookDto2);
     }
 
     @Test
@@ -99,16 +98,16 @@ class BookServiceTest {
                 .hasMessage("No Book could be found for id " + book1.getId());
     }
 
-//    @Test
-//    void getBooksByIsbn_givenRepoWithBooks_thenReturnBookDTO() {
-//        // given
-//        Mockito.when(bookRepositoryMock.getByIsbn("978-1338878929")).thenReturn(List.of(book2));
-//        Mockito.when(bookMapperMock.mapToDTO(List.of(book2))).thenReturn(List.of(bookDto2));
-//        // when
-//        List<BookDto> actualBooks = bookService.getBooksByIsbn("978-1338878929");
-//        // then
-//        Assertions.assertThat(actualBooks).containsExactlyInAnyOrder(bookDto2);
-//    }
+    @Test
+    void getBooksByIsbn_givenRepoWithBooks_thenReturnBookDTO() {
+        // given
+        Mockito.when(bookRepositoryMock.getByIsbn("978-1338878929")).thenReturn(Optional.ofNullable(book2));
+        Mockito.when(bookMapperMock.mapToDTO(List.of(book2))).thenReturn(List.of(bookDto2));
+        // when
+        List<BookDto> actualBooks = bookService.getBooksByIsbn("978-1338878929");
+        // then
+        Assertions.assertThat(actualBooks).containsExactlyInAnyOrder(bookDto2);
+    }
 
     @Test
     void getBooksByTitle_givenRepoWithBooks_thenReturnBookDTO() {
