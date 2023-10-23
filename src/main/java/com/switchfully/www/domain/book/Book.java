@@ -56,7 +56,7 @@ public class Book {
     }
 
     public String getAuthorFullname() {
-        return author.getFullName();
+        return author.getFirstName() + " " + author.getLastName();
     }
 
     public BookStatus getBookStatus() {
