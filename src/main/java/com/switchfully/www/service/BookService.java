@@ -50,10 +50,12 @@ public class BookService {
     }
 
     public BookDto createBook(CreateBookDto createBookDto) {
-        LOG.info("-------------------- "+ createBookDto.getIsbn());
+
         Book bookToSave = new Book(createBookDto.getIsbn(), createBookDto.getTitle(), createBookDto.getSummary(), createBookDto.getAuthor());
 
-        return bookMapper.mapToDTO(bookRepository.addBook(bookToSave));
+        return bookMapper.mapToDTO(bookRepository
+                .addBook(bookToSave)
+                .orElseThrow(()-> new IllegalArgumentException("A book with ISBN " + bookToSave.getIsbnIdentifier() + " already exists in our database.")));
     }
 
     public BookDto updateBook(UpdateBookDto updateBookDto, String id) {

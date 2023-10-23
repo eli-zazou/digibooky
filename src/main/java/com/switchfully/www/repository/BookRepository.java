@@ -19,12 +19,13 @@ public class BookRepository {
     }
 
 
-    public Book addBook(Book book) {
-        if(booksById.containsValue(book)){
-            return null;
+    public Optional<Book> addBook(Book book) {
+        if (booksById.containsValue(book)) {
+            book = null;
+        } else {
+            booksById.put(book.getId(), book);
         }
-        booksById.put(book.getId(), book);
-        return book;
+        return Optional.ofNullable(book);
     }
 
 
