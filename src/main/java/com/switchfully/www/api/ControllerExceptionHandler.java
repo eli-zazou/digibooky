@@ -30,4 +30,10 @@ public class ControllerExceptionHandler {
         return Response.status(Response.Status.FORBIDDEN).entity(wrongPasswordException.getMessage()).build();
     }
 
+    @ServerExceptionMapper(NotFoundException.class)
+    protected Response notFoundException(NotFoundException notFoundException) {
+        LOG.info(notFoundException.getMessage());
+        return Response.status(Response.Status.NOT_FOUND).entity(notFoundException.getMessage()).build();
+    }
+
 }
