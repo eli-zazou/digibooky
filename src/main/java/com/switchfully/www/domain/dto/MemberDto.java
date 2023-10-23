@@ -1,6 +1,6 @@
 package com.switchfully.www.domain.dto;
 
-import com.switchfully.www.domain.Address;
+import com.switchfully.www.domain.member.Address;
 
 public class MemberDto {
     private String id;

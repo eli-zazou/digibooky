@@ -1,9 +1,11 @@
 package com.switchfully.www.service;
 
-import com.switchfully.www.api.CreateMemberDTO;
+import com.switchfully.www.domain.dto.CreateMemberDTO;
 import com.switchfully.www.constTest;
-import com.switchfully.www.domain.*;
 import com.switchfully.www.domain.dto.MemberDto;
+import com.switchfully.www.domain.member.Address;
+import com.switchfully.www.domain.member.City;
+import com.switchfully.www.domain.member.Member;
 import com.switchfully.www.repository.MemberRepository;
 import com.switchfully.www.service.mapper.MemberMapper;
 import org.junit.jupiter.api.BeforeEach;

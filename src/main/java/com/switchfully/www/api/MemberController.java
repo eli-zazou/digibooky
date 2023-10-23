@@ -1,6 +1,7 @@
 package com.switchfully.www.api;
 
-import com.switchfully.www.domain.Feature;
+import com.switchfully.www.domain.security.Feature;
+import com.switchfully.www.domain.dto.CreateMemberDTO;
 import com.switchfully.www.domain.dto.MemberDto;
 import com.switchfully.www.service.MemberService;
 import com.switchfully.www.service.SecurityService;
@@ -18,7 +19,7 @@ public class MemberController {
     private MemberService memberService;
     private final SecurityService securityService;
 
-    public MemberController(MemberService memberService, SecurityService securityService){
+    public MemberController(MemberService memberService, SecurityService securityService) {
         this.memberService = memberService;
         this.securityService = securityService;
     }
@@ -26,13 +27,13 @@ public class MemberController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @ResponseStatus(201)
-    public Response createMember(CreateMemberDTO createMemberDTO){
+    public Response createMember(CreateMemberDTO createMemberDTO) {
         return Response.status(201).entity(memberService.createMember(createMemberDTO)).build();
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<MemberDto> getAllMembers(@RestHeader String authorization){
+    public List<MemberDto> getAllMembers(@RestHeader String authorization) {
         securityService.validateAuthorization(authorization, Feature.VIEW_MEMBERS);
         return memberService.getAllMembers();
     }
@@ -42,12 +43,10 @@ public class MemberController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @ResponseStatus(201)
-    public MemberDto createAdminOrLibrarian(@RestHeader String authorization,  CreateMemberDTO createMemberDTO){
-        // TODO verify if we can make one feature like manage_user
+    public MemberDto createAdminOrLibrarian(@RestHeader String authorization, CreateMemberDTO createMemberDTO) {
         securityService.validateAuthorization(authorization, Feature.ADD_ADMIN);
         return memberService.createAdminOrLibrarian(createMemberDTO);
     }
-
 
 
 }

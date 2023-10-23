@@ -1,8 +1,8 @@
 package com.switchfully.www.service;
 
-import com.switchfully.www.domain.Author;
-import com.switchfully.www.domain.Book;
-import com.switchfully.www.domain.Isbn;
+import com.switchfully.www.domain.book.Author;
+import com.switchfully.www.domain.book.Book;
+import com.switchfully.www.domain.book.Isbn;
 import com.switchfully.www.domain.dto.BookDto;
 import com.switchfully.www.exceptions.NotFoundException;
 import com.switchfully.www.repository.BookRepository;

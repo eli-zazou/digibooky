@@ -1,8 +1,7 @@
 package com.switchfully.www.repository;
 
-import com.switchfully.www.domain.Book;
-import com.switchfully.www.domain.Member;
-import com.switchfully.www.domain.Rental;
+import com.switchfully.www.domain.book.Book;
+import com.switchfully.www.domain.rental.Rental;
 import jakarta.enterprise.context.ApplicationScoped;
 
 import java.util.*;
@@ -21,9 +20,8 @@ public class RentalRepository {
         return rental;
     }
 
-    public Boolean removeRental(Rental rental) {
-        rentalById.remove(rental.getId(), rental);
-        return true;
+    public boolean removeRental(Rental rental) {
+        return rentalById.remove(rental.getId(), rental);
     }
 
     public Collection<Rental> getRentalByMember(String id) {
@@ -33,13 +31,14 @@ public class RentalRepository {
                 .toList();
     }
 
-    public List<Book> getOverdueBooks(){
+    public List<Book> getOverdueBooks() {
         return rentalById.values()
                 .stream()
                 .filter(Rental::isOverDue)
                 .map(Rental::getBook)
                 .toList();
     }
+
     public Optional<Rental> getById(String Id) {
         return Optional.ofNullable(rentalById.get(Id));
     }

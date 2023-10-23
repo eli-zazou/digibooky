@@ -1,10 +1,10 @@
 package com.switchfully.www;
 
-import com.switchfully.www.api.CreateMemberDTO;
-import com.switchfully.www.domain.Address;
-import com.switchfully.www.domain.City;
-import com.switchfully.www.domain.Member;
-import com.switchfully.www.domain.UserRole;
+import com.switchfully.www.domain.dto.CreateMemberDTO;
+import com.switchfully.www.domain.member.Address;
+import com.switchfully.www.domain.member.City;
+import com.switchfully.www.domain.member.Member;
+import com.switchfully.www.domain.security.UserRole;
 
 public class constTest {
 

@@ -1,13 +1,13 @@
 package com.switchfully.www.domain.dto;
 
-import com.switchfully.www.domain.Isbn;
+import com.switchfully.www.domain.book.Isbn;
 
 public class CreateRentalDto {
 
     private String memberId;
     private Isbn isbn;
 
-    private CreateRentalDto(){
+    private CreateRentalDto() {
         //JACKSON
     }
 

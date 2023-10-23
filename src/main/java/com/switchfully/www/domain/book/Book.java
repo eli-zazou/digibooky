@@ -1,9 +1,8 @@
-package com.switchfully.www.domain;
+package com.switchfully.www.domain.book;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.UUID;
 
 public class Book {

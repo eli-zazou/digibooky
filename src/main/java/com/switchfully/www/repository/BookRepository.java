@@ -1,6 +1,6 @@
 package com.switchfully.www.repository;
 
-import com.switchfully.www.domain.Book;
+import com.switchfully.www.domain.book.Book;
 import jakarta.enterprise.context.ApplicationScoped;
 
 import java.time.LocalDateTime;
@@ -64,7 +64,6 @@ public class BookRepository {
     }
 
     public boolean deleteById(Book book) {
-        // TODO check if the book is lent by a member
         if (book.getDateDeleted() == null) {
             book.setDateDeleted(LocalDateTime.now());
             return true;

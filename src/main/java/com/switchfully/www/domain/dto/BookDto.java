@@ -1,9 +1,8 @@
 package com.switchfully.www.domain.dto;
 
-import com.switchfully.www.domain.Author;
-import com.switchfully.www.domain.BookStatus;
-import com.switchfully.www.domain.Isbn;
-import com.switchfully.www.domain.Member;
+import com.switchfully.www.domain.book.Author;
+import com.switchfully.www.domain.book.BookStatus;
+import com.switchfully.www.domain.book.Isbn;
 
 import java.time.LocalDate;
 
@@ -13,9 +12,7 @@ public class BookDto {
     private String title;
     private String summary;
     private Author author;
-
     private BookStatus bookStatus;
-
     private String rentedPerson;
     private LocalDate dateOfReturn;
 

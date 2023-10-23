@@ -1,4 +1,4 @@
-package com.switchfully.www.domain;
+package com.switchfully.www.domain.member;
 
 public class City {
     private String postalCode;
@@ -18,14 +18,14 @@ public class City {
     }
 
     public void setPostalCode(String postalCode) {
-        if(postalCode==null) {
+        if (postalCode == null) {
             throw new IllegalArgumentException("Please provide a postal code for the member");
         }
         this.postalCode = postalCode;
     }
 
     public void setCityName(String cityName) {
-        if(cityName==null) {
+        if (cityName == null) {
             throw new IllegalArgumentException("Please provide a name of the city for the member");
         }
         this.cityName = cityName;

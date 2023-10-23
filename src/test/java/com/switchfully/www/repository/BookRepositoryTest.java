@@ -1,8 +1,8 @@
 package com.switchfully.www.repository;
 
-import com.switchfully.www.domain.Author;
-import com.switchfully.www.domain.Book;
-import com.switchfully.www.domain.Isbn;
+import com.switchfully.www.domain.book.Author;
+import com.switchfully.www.domain.book.Book;
+import com.switchfully.www.domain.book.Isbn;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

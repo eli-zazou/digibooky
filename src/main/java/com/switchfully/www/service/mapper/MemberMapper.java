@@ -1,13 +1,9 @@
 package com.switchfully.www.service.mapper;
 
-import com.switchfully.www.api.CreateMemberDTO;
-import com.switchfully.www.domain.Book;
-import com.switchfully.www.domain.Member;
-import com.switchfully.www.domain.UserRole;
-import com.switchfully.www.domain.dto.BookDto;
-import com.switchfully.www.domain.dto.CreateBookDto;
+import com.switchfully.www.domain.dto.CreateMemberDTO;
+import com.switchfully.www.domain.member.Member;
+import com.switchfully.www.domain.security.UserRole;
 import com.switchfully.www.domain.dto.MemberDto;
-import com.switchfully.www.domain.dto.UpdateBookDto;
 import jakarta.enterprise.context.ApplicationScoped;
 
 import java.util.List;

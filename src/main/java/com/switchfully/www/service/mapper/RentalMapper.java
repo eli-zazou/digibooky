@@ -1,8 +1,6 @@
 package com.switchfully.www.service.mapper;
 
-import com.switchfully.www.domain.Book;
-import com.switchfully.www.domain.Rental;
-import com.switchfully.www.domain.dto.BookDto;
+import com.switchfully.www.domain.rental.Rental;
 import com.switchfully.www.domain.dto.RentalDto;
 import jakarta.enterprise.context.ApplicationScoped;
 

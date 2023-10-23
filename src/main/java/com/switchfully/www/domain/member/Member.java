@@ -1,4 +1,7 @@
-package com.switchfully.www.domain;
+package com.switchfully.www.domain.member;
+
+import com.switchfully.www.domain.security.Feature;
+import com.switchfully.www.domain.security.UserRole;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

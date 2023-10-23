@@ -1,13 +1,12 @@
 package com.switchfully.www.domain.dto;
 
-import com.switchfully.www.domain.Author;
+import com.switchfully.www.domain.book.Author;
 
 public class UpdateBookDto {
 
     private String title;
     private String summary;
     private Author author;
-
 
     public String getTitle() {
         return title;

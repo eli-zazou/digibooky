@@ -1,4 +1,4 @@
-package com.switchfully.www.domain;
+package com.switchfully.www.domain.book;
 
 import java.util.Objects;
 

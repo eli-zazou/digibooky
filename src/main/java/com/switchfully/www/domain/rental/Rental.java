@@ -1,4 +1,7 @@
-package com.switchfully.www.domain;
+package com.switchfully.www.domain.rental;
+
+import com.switchfully.www.domain.book.Book;
+import com.switchfully.www.domain.member.Member;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -33,7 +36,7 @@ public class Rental {
         return dueDate;
     }
 
-    public boolean isOverDue(){
+    public boolean isOverDue() {
         return LocalDate.now().isAfter(dueDate);
     }
 }

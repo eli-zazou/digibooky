@@ -1,4 +1,4 @@
-package com.switchfully.www.domain;
+package com.switchfully.www.domain.member;
 
 public class Address {
 
@@ -33,7 +33,7 @@ public class Address {
     }
 
     public void setCity(City city) {
-        if(city==null) {
+        if (city == null) {
             throw new IllegalArgumentException("Please provide a city for the member");
         }
         this.city = city;

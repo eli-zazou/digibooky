@@ -1,7 +1,7 @@
 package com.switchfully.www.domain.dto;
 
-import com.switchfully.www.domain.Book;
-import com.switchfully.www.domain.Member;
+import com.switchfully.www.domain.book.Book;
+import com.switchfully.www.domain.member.Member;
 
 import java.time.LocalDate;
 

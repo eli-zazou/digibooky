@@ -1,17 +1,12 @@
 package com.switchfully.www.api;
 
-import com.switchfully.www.domain.Author;
-import com.switchfully.www.domain.Book;
-import com.switchfully.www.domain.Isbn;
+import com.switchfully.www.domain.book.Author;
+import com.switchfully.www.domain.book.Isbn;
 import com.switchfully.www.domain.dto.BookDto;
-import com.switchfully.www.repository.BookRepository;
 import com.switchfully.www.service.BookService;
-import com.switchfully.www.service.SecurityService;
-import com.switchfully.www.service.mapper.BookMapper;
 import io.quarkus.test.common.http.TestHTTPEndpoint;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.http.ContentType;
-import jakarta.inject.Inject;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,7 +17,6 @@ import java.util.UUID;
 
 import static io.restassured.RestAssured.given;
 import static org.jboss.resteasy.reactive.RestResponse.StatusCode.OK;
-import static org.junit.jupiter.api.Assertions.*;
 
 @TestHTTPEndpoint(BookController.class)
 @QuarkusTest //Rest Assured

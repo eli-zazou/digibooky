@@ -1,15 +1,15 @@
 package com.switchfully.www.service;
 
-import com.switchfully.www.domain.DecodedCredentials;
-import com.switchfully.www.domain.Feature;
-import com.switchfully.www.domain.Member;
+import com.switchfully.www.domain.security.DecodedCredentials;
+import com.switchfully.www.domain.security.Feature;
+import com.switchfully.www.domain.member.Member;
 import com.switchfully.www.exceptions.UnauthorizatedException;
-import com.switchfully.www.exceptions.UnknownUserException;
 import com.switchfully.www.exceptions.WrongPasswordException;
 import com.switchfully.www.repository.MemberRepository;
 import jakarta.annotation.Nullable;
 import jakarta.enterprise.context.ApplicationScoped;
 import org.jboss.logging.Logger;
+
 import static java.lang.String.format;
 
 
@@ -31,7 +31,7 @@ public class SecurityService {
         DecodedCredentials credentials = getUsernamePassword(Optional.ofNullable(authorization)
                 .orElseThrow(() -> new UnauthorizatedException("You do not have authorization")));
         Member user = memberRepository.getByEmail(credentials.getEmail())
-                .orElseThrow(() -> new UnauthorizatedException("Unknown user "+ credentials.getEmail()));
+                .orElseThrow(() -> new UnauthorizatedException("Unknown user " + credentials.getEmail()));
 
         if (!user.doesPasswordMatch(credentials.getPassword())) {
             LOG.errorf("Password does not match for user %s", credentials.getEmail());
@@ -40,7 +40,7 @@ public class SecurityService {
 
         if (!user.canHaveAccessTo(feature)) {
             LOG.error(format("User %s does not have access to %s", credentials.getEmail(), feature));
-            throw new UnauthorizatedException("User "+credentials.getEmail()+" does not have access to "+ feature.toString());
+            throw new UnauthorizatedException("User " + credentials.getEmail() + " does not have access to " + feature.toString());
         }
 
     }

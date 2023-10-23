@@ -1,6 +1,6 @@
 package com.switchfully.www.service.mapper;
 
-import com.switchfully.www.domain.Book;
+import com.switchfully.www.domain.book.Book;
 import com.switchfully.www.domain.dto.BookDto;
 import com.switchfully.www.domain.dto.CreateBookDto;
 import com.switchfully.www.domain.dto.UpdateBookDto;
@@ -36,7 +36,6 @@ public class BookMapper {
     }
 
     public Book mapToEntity(UpdateBookDto updateBookDto) {
-        // TODO check but updateBookDto shouldn't have isbn.
         return new Book(null, updateBookDto.getTitle(), updateBookDto.getSummary(), updateBookDto.getAuthor());
     }
 }

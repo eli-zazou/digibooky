@@ -1,9 +1,9 @@
 package com.switchfully.www.service;
 
-import com.switchfully.www.domain.Book;
-import com.switchfully.www.domain.BookStatus;
-import com.switchfully.www.domain.Member;
-import com.switchfully.www.domain.Rental;
+import com.switchfully.www.domain.book.Book;
+import com.switchfully.www.domain.book.BookStatus;
+import com.switchfully.www.domain.member.Member;
+import com.switchfully.www.domain.rental.Rental;
 import com.switchfully.www.domain.dto.BookDto;
 import com.switchfully.www.domain.dto.CreateRentalDto;
 import com.switchfully.www.domain.dto.RentalDto;
@@ -17,7 +17,6 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.ws.rs.core.Response;
 
 import java.util.List;
-import java.util.Optional;
 
 @ApplicationScoped
 public class RentalService {
@@ -37,14 +36,14 @@ public class RentalService {
         this.bookMapper = bookMapper;
     }
 
-    public RentalDto rentABook(CreateRentalDto createRentalDto){
+    public RentalDto rentABook(CreateRentalDto createRentalDto) {
         Book bookToRent = bookRepository.getByIsbn(createRentalDto.getIsbn().getIsbn())
-                .orElseThrow(()-> new NotFoundException("No book could be found for this ISBN."));
-        if (!bookToRent.isAvailableForRent()){
+                .orElseThrow(() -> new NotFoundException("No book could be found for this ISBN."));
+        if (!bookToRent.isAvailableForRent()) {
             throw new IllegalArgumentException("This book is not available for rent.");
         }
         Member member = memberRepository.getMemberById(createRentalDto.getMemberId())
-                .orElseThrow(()-> new NotFoundException("No member could be found for this id."));
+                .orElseThrow(() -> new NotFoundException("No member could be found for this id."));
         Rental rental = new Rental(member, bookToRent);
         bookToRent.setBookStatus(BookStatus.BORROWED);
         bookToRent.setBorrowedTo(member.getFirstName());
@@ -52,21 +51,23 @@ public class RentalService {
         return rentalMapper.mapToDto(rentalRepository.addRental(rental));
     }
 
-    public Response returnBook(String id){
+    public Response returnBook(String id) {
         Rental rentalToDelete = rentalRepository.getById(id)
                 .orElseThrow(() -> new NotFoundException("No Rental could be found for id " + id));
         rentalToDelete.getBook().setBookStatus(BookStatus.AVAILABLE);
         rentalToDelete.getBook().setBorrowedTo(null);
         rentalToDelete.getBook().setDateOfReturn(null);
-        if(rentalToDelete.isOverDue()){
+        if (rentalToDelete.isOverDue()) {
             return Response.status(402).build();
         }
-         rentalRepository.removeRental(rentalToDelete);
+        if (rentalRepository.removeRental(rentalToDelete)) {
+            throw new NotFoundException("Couldn't delete unexisting rental " + id);
+        }
         return Response.status(200).build();
     }
 
-    public List<RentalDto> getRentalByMember(String id){
-     return rentalMapper.mapToDTO(rentalRepository.getRentalByMember(id).stream().toList());
+    public List<RentalDto> getRentalByMember(String id) {
+        return rentalMapper.mapToDTO(rentalRepository.getRentalByMember(id).stream().toList());
     }
 
     public List<BookDto> getOverdueBooks() {

@@ -1,5 +1,6 @@
 package com.switchfully.www.domain;
 
+import com.switchfully.www.domain.book.Isbn;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

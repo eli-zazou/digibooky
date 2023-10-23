@@ -1,6 +1,6 @@
 package com.switchfully.www.api;
 
-import com.switchfully.www.domain.Feature;
+import com.switchfully.www.domain.security.Feature;
 import com.switchfully.www.domain.dto.BookDto;
 import com.switchfully.www.domain.dto.CreateBookDto;
 import com.switchfully.www.domain.dto.UpdateBookDto;

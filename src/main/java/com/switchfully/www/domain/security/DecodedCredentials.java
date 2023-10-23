@@ -1,4 +1,4 @@
-package com.switchfully.www.domain;
+package com.switchfully.www.domain.security;
 
 public class DecodedCredentials {
     private final String email;
