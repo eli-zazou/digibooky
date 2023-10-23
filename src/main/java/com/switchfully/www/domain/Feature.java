@@ -6,5 +6,6 @@ public enum Feature {
     MANAGE_USER,
     ADD_ADMIN,
     BORROW_BOOK,
-    RETURN_BOOK
+    RETURN_BOOK,
+    VIEW_RENTALS
 }

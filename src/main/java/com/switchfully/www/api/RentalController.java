@@ -1,6 +1,7 @@
 package com.switchfully.www.api;
 
 import com.switchfully.www.domain.Feature;
+import com.switchfully.www.domain.dto.BookDto;
 import com.switchfully.www.domain.dto.CreateRentalDto;
 import com.switchfully.www.domain.dto.RentalDto;
 import com.switchfully.www.service.RentalService;
@@ -10,6 +11,8 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.jboss.resteasy.reactive.ResponseStatus;
 import org.jboss.resteasy.reactive.RestHeader;
+
+import java.util.List;
 
 @Path("/rental")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -24,6 +27,14 @@ public class RentalController {
         this.securityService = securityService;
     }
 
+    @GET
+    @Path("/member/{id}")
+    @ResponseStatus(200)
+    public List<RentalDto> getRentalsByMember(@RestHeader String authorization,@PathParam("id") String memberId) {
+        securityService.validateAuthorization(authorization, Feature.VIEW_RENTALS);
+        return rentalService.getRentalByMember(memberId);
+    }
+
     @POST
     @ResponseStatus(201)
     public RentalDto lendBookByIsbn(@RestHeader String authorization, CreateRentalDto createRentalDto){
@@ -36,6 +47,11 @@ public class RentalController {
     public Response returnBook(@RestHeader String authorization,@PathParam("id") String id){
         securityService.validateAuthorization(authorization, Feature.RETURN_BOOK);
         return rentalService.returnBook(id);
+    }
+
+    @GET
+    public List<BookDto> returnOverdueBook(@RestHeader String authorization){
+        return rentalService.getOverdueBooks();
     }
 
 }

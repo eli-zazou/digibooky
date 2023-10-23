@@ -4,16 +4,19 @@ import com.switchfully.www.domain.Book;
 import com.switchfully.www.domain.BookStatus;
 import com.switchfully.www.domain.Member;
 import com.switchfully.www.domain.Rental;
+import com.switchfully.www.domain.dto.BookDto;
 import com.switchfully.www.domain.dto.CreateRentalDto;
 import com.switchfully.www.domain.dto.RentalDto;
 import com.switchfully.www.exceptions.NotFoundException;
 import com.switchfully.www.repository.BookRepository;
 import com.switchfully.www.repository.MemberRepository;
 import com.switchfully.www.repository.RentalRepository;
+import com.switchfully.www.service.mapper.BookMapper;
 import com.switchfully.www.service.mapper.RentalMapper;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.ws.rs.core.Response;
 
+import java.util.List;
 import java.util.Optional;
 
 @ApplicationScoped
@@ -23,13 +26,15 @@ public class RentalService {
     private final MemberRepository memberRepository;
     private final RentalRepository rentalRepository;
     private final RentalMapper rentalMapper;
+    private final BookMapper bookMapper;
 
-
-    public RentalService(BookRepository bookRepository, MemberRepository memberRepository, RentalRepository rentalRepository, RentalMapper rentalMapper) {
+    public RentalService(BookRepository bookRepository, MemberRepository memberRepository,
+                         RentalRepository rentalRepository, RentalMapper rentalMapper, BookMapper bookMapper) {
         this.bookRepository = bookRepository;
         this.memberRepository = memberRepository;
         this.rentalRepository = rentalRepository;
         this.rentalMapper = rentalMapper;
+        this.bookMapper = bookMapper;
     }
 
     public RentalDto rentABook(CreateRentalDto createRentalDto){
@@ -58,5 +63,13 @@ public class RentalService {
         }
          rentalRepository.removeRental(rentalToDelete);
         return Response.status(200).build();
+    }
+
+    public List<RentalDto> getRentalByMember(String id){
+     return rentalMapper.mapToDTO(rentalRepository.getRentalByMember(id).stream().toList());
+    }
+
+    public List<BookDto> getOverdueBooks() {
+        return bookMapper.mapToDTO(rentalRepository.getOverdueBooks());
     }
 }
