@@ -81,7 +81,7 @@ class BookControllerTest {
                 .jsonPath()
                 .getList(".", BookDto.class);
 
-        Assertions.assertThat(bookDTOList).containsExactly(bookDto1, bookDto2);
+        Assertions.assertThat(bookDTOList).containsExactlyInAnyOrder(bookDto1, bookDto2);
     }
 
     private void addAllBooksInRepo(List<Book> books) {

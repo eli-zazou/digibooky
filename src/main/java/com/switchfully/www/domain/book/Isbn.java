@@ -8,11 +8,9 @@ public class Isbn {
     private Isbn() {
     }
 
-
     public Isbn(String isbn) {
         this.isbnNumber = isbn;
         if (!isValidIsbn(isbn)) throw new IllegalArgumentException("This ISBN is not valid.");
-
     }
 
     public String getIsbn() {
@@ -23,8 +21,8 @@ public class Isbn {
         this.isbnNumber = isbn;
     }
 
-    public boolean isValidIsbn(String isbn) {
-        String isbnC = isbn.replaceAll("-","");
+    public static boolean isValidIsbn(String isbn) {
+        String isbnC = isbn.replaceAll("-", "");
         if (isbnC == null) return false;
         if (isbnC.length() != 13) return false;
         if (!isbnC.matches("[0-9]+")) return false;
