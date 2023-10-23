@@ -18,6 +18,7 @@ public class Book {
     private BookStatus bookStatus;
     private String borrowedTo;
 
+
     public Book(String isbn, String title, String summary, Author author) {
         this.id = UUID.randomUUID().toString();
         this.dateCreated = LocalDateTime.now();
@@ -127,12 +128,6 @@ public class Book {
             this.author = author;
         }
         return this;
-    }
-
-    public Book update(Book modifiedBook) {
-        return this.changeTitle(modifiedBook.getTitle())
-                .changeSummary(modifiedBook.getSummary())
-                .changeAuthor(modifiedBook.getAuthor());
     }
 
     @Override

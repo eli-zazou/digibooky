@@ -1,6 +1,5 @@
 package com.switchfully.www.service;
 
-import com.switchfully.www.api.ControllerExceptionHandler;
 import com.switchfully.www.domain.book.Book;
 import com.switchfully.www.domain.dto.BookDto;
 import com.switchfully.www.domain.dto.CreateBookDto;
@@ -55,14 +54,18 @@ public class BookService {
 
         return bookMapper.mapToDTO(bookRepository
                 .addBook(bookToSave)
-                .orElseThrow(()-> new IllegalArgumentException("A book with ISBN " + bookToSave.getIsbnIdentifier() + " already exists in our database.")));
+                .orElseThrow(() -> new IllegalArgumentException("A book with ISBN " + bookToSave.getIsbnIdentifier() + " already exists in our database.")));
     }
 
     public BookDto updateBook(UpdateBookDto updateBookDto, String id) {
-        return bookMapper.mapToDTO(
-                bookRepository
-                        .updateBookById(bookMapper.mapToEntity(updateBookDto), id)
-                        .orElseThrow(() -> new NotFoundException("No Book could be found for id " + id)));
+        Book bookToUpdate = bookRepository.getById(id).orElseThrow(() -> new NotFoundException("No Book could be found for id " + id));
+
+        Book updatedBook = bookToUpdate.changeAuthor(updateBookDto.getAuthor())
+                .changeSummary(updateBookDto.getSummary())
+                .changeTitle(updateBookDto.getTitle());
+
+        return bookMapper.mapToDTO(updatedBook);
+
     }
 
     public Boolean deleteBookById(String id) {
