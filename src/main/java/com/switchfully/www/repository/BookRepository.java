@@ -20,6 +20,9 @@ public class BookRepository {
 
 
     public Book addBook(Book book) {
+        if(booksById.containsValue(book)){
+            return null;
+        }
         booksById.put(book.getId(), book);
         return book;
     }
