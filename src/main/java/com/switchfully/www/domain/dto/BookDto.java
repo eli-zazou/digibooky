@@ -5,6 +5,7 @@ import com.switchfully.www.domain.book.BookStatus;
 import com.switchfully.www.domain.book.Isbn;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class BookDto {
     private String id;
@@ -92,5 +93,18 @@ public class BookDto {
     public BookDto setDateOfReturn(LocalDate dateOfReturn) {
         this.dateOfReturn = dateOfReturn;
         return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BookDto bookDto = (BookDto) o;
+        return Objects.equals(id, bookDto.id) && Objects.equals(isbn, bookDto.isbn);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, isbn);
     }
 }
