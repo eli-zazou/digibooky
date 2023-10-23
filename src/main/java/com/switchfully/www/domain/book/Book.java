@@ -18,13 +18,13 @@ public class Book {
     private BookStatus bookStatus;
     private String borrowedTo;
 
-    public Book(Isbn isbn, String title, String summary, Author author) {
+    public Book(String isbn, String title, String summary, Author author) {
         this.id = UUID.randomUUID().toString();
         this.dateCreated = LocalDateTime.now();
         this.dateDeleted = null;
         this.dateUpdated = null;
         this.bookStatus = BookStatus.AVAILABLE;
-        setIsbn(isbn);
+        this.isbn = new Isbn(isbn);
         setTitle(title);
         this.summary = summary;
         setAuthor(author);

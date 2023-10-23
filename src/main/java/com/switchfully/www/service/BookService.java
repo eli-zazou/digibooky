@@ -1,5 +1,6 @@
 package com.switchfully.www.service;
 
+import com.switchfully.www.api.ControllerExceptionHandler;
 import com.switchfully.www.domain.book.Book;
 import com.switchfully.www.domain.dto.BookDto;
 import com.switchfully.www.domain.dto.CreateBookDto;
@@ -8,6 +9,7 @@ import com.switchfully.www.exceptions.NotFoundException;
 import com.switchfully.www.repository.BookRepository;
 import com.switchfully.www.service.mapper.BookMapper;
 import jakarta.enterprise.context.ApplicationScoped;
+import org.jboss.logging.Logger;
 
 import java.util.List;
 
@@ -16,6 +18,8 @@ public class BookService {
 
     private final BookRepository bookRepository;
     private final BookMapper bookMapper;
+
+    private static final Logger LOG = Logger.getLogger(BookService.class);
 
 
     public BookService(BookRepository bookRepository, BookMapper bookMapper) {
@@ -46,6 +50,7 @@ public class BookService {
     }
 
     public BookDto createBook(CreateBookDto createBookDto) {
+        LOG.info("-------------------- "+ createBookDto.getIsbn());
         Book bookToSave = new Book(createBookDto.getIsbn(), createBookDto.getTitle(), createBookDto.getSummary(), createBookDto.getAuthor());
 
         return bookMapper.mapToDTO(bookRepository.addBook(bookToSave));

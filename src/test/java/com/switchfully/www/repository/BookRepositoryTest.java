@@ -18,12 +18,12 @@ class BookRepositoryTest {
     @BeforeEach
     void setup() {
         bookRepository = new BookRepository();
-        book1 = new Book(new Isbn("978-8845292613"),
+        book1 = new Book("978-8845292613",
                 "The lord of the Rings",
                 "Hobbit goes on a journey",
                 new Author("J.R.R", "Tolkien")
         );
-        book2 = new Book(new Isbn("978-1338878929"),
+        book2 = new Book("978-1338878929",
                 "Harry Potter Plays Chess",
                 "Wizzard boy goes to school",
                 new Author("J.K.", "Rowling")
@@ -32,7 +32,7 @@ class BookRepositoryTest {
 
     @Test
     void save_givenABook_thenBookIsInRepository() {
-        Book bookToSave = new Book(new Isbn("0123456789123"), "Title", "Summary", new Author("firstname", "lastname"));
+        Book bookToSave = new Book("0123456789123", "Title", "Summary", new Author("firstname", "lastname"));
 
         Assertions.assertThat(bookToSave).isEqualTo(bookRepository.addBook(bookToSave));
     }

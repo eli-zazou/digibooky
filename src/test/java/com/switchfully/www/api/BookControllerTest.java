@@ -36,26 +36,26 @@ class BookControllerTest {
 
     @BeforeEach
     void setUp() {
-        book1 = new Book(new Isbn("978-8845292613"),
+        book1 = new Book("978-8845292613",
                 "The lord of the Rings",
                 "Hobbit goes on a journey",
                 new Author("J.R.R", "Tolkien")
         );
-        book2 = new Book(new Isbn("978-1338878929"),
+        book2 = new Book("978-1338878929",
                 "Harry Potter Plays Chess",
                 "Wizzard boy goes to school",
                 new Author("J.K.", "Rowling")
         );
         bookDto1 = new BookDto()
                 .setId(book1.getId())
-                .setIsbn(book1.getIsbn())
+                .setIsbn(book1.getIsbn().getIsbn())
                 .setTitle(book1.getTitle())
                 .setAuthor(book1.getAuthor())
                 .setSummary(book1.getSummary());
 
         bookDto2 = new BookDto()
                 .setId(book2.getId())
-                .setIsbn(book2.getIsbn())
+                .setIsbn(book2.getIsbn().getIsbn())
                 .setTitle(book2.getTitle())
                 .setAuthor(book2.getAuthor())
                 .setSummary(book2.getSummary());

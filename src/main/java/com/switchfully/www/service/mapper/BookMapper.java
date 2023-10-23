@@ -22,7 +22,7 @@ public class BookMapper {
     public BookDto mapToDTO(Book book) {
         return new BookDto()
                 .setId(book.getId())
-                .setIsbn(book.getIsbn())
+                .setIsbn(book.getIsbn().getIsbn())
                 .setTitle(book.getTitle())
                 .setAuthor(book.getAuthor())
                 .setSummary(book.getSummary())
